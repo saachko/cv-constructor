@@ -1,13 +1,9 @@
 import React from 'react';
 
-import {
-  HeaderContainer,
-  HeaderLink,
-  HeaderText,
-} from './Header.style';
-
-import LogoSvg from './LogoSvg';
+import Logo from 'components/Logo/Logo';
 import NavMenu from './NavMenu/NavMenu';
+
+import HeaderContainer from './Header.style';
 
 interface HeaderProps {
   isLoggedIn: boolean,
@@ -20,10 +16,7 @@ function Header({
 }: HeaderProps) {
   return (
     <HeaderContainer>
-      <HeaderLink to="/">
-        <LogoSvg />
-        <HeaderText>CV constructor</HeaderText>
-      </HeaderLink>
+      <Logo />
       <NavMenu
         isLoggedIn={isLoggedIn}
         setLoggedIn={setLoggedIn}
