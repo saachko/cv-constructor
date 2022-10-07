@@ -65,7 +65,7 @@ const defaultTheme: DefaultTheme = {
     h2: '36px',
     h3: '24px',
     h4: '20px',
-    text: '18px',
+    text: '16px',
     smallText: '14px',
   },
   effects: {

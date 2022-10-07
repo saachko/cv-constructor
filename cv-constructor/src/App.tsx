@@ -1,14 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import useLocalStorage from 'hooks/useLocalStorage';
 
+import Header from 'components/Header/Header';
+import Footer from 'components/Footer/Footer';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+
 import Global from './styles/Global';
 import defaultTheme from './styles/theme';
-
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useLocalStorage('isLoggedIn', false);
@@ -16,6 +17,10 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Global />
+      <Header
+        isLoggedIn={isLoggedIn}
+        setLoggedIn={setLoggedIn}
+      />
       <Routes>
         <Route path="/" element={<div>App</div>} />
         <Route path="/constructor" element={<div>constructor</div>} />
@@ -29,6 +34,7 @@ function App() {
           )} />
         <Route path="*" element={<div>not found</div>} />
       </Routes>
+      <Footer />
     </ThemeProvider>
   );
 }

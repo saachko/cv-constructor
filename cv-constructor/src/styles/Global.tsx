@@ -14,6 +14,8 @@ const Global = createGlobalStyle`
 body {
   background-color: ${defaultTheme.colors.backgroundWhite};
   font-family: ${defaultTheme.fonts.text};
+  font-size: ${defaultTheme.fontSizes.text};
+  color: ${defaultTheme.colors.text};
 }
 
 h1,
@@ -31,11 +33,11 @@ b {
 }
 
 #root {
-  color: ${defaultTheme.colors.text};
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 `;
 
