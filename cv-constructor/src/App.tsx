@@ -1,11 +1,18 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
+import useLocalStorage from 'hooks/useLocalStorage';
+
 import Global from './styles/Global';
 import defaultTheme from './styles/theme';
 
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+
 function App() {
+  const [isLoggedIn, setLoggedIn] = useLocalStorage('isLoggedIn', false);
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Global />
@@ -13,7 +20,13 @@ function App() {
         <Route path="/" element={<div>App</div>} />
         <Route path="/constructor" element={<div>constructor</div>} />
         <Route path="/constructor/cv" element={<div>CV</div>} />
-        <Route path="/my-cv" element={<div>my cv</div>} />
+        <Route
+          path="/my-cv"
+          element={(
+            <ProtectedRoute conditionValue={isLoggedIn}>
+              <div>this is protected route</div>
+            </ProtectedRoute>
+          )} />
         <Route path="*" element={<div>not found</div>} />
       </Routes>
     </ThemeProvider>
