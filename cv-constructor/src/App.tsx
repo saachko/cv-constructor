@@ -6,6 +6,7 @@ import useLocalStorage from 'hooks/useLocalStorage';
 
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
+import Home from 'components/Home/Home';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 import Global from './styles/Global';
@@ -22,7 +23,7 @@ function App() {
         setLoggedIn={setLoggedIn}
       />
       <Routes>
-        <Route path="/" element={<div>App</div>} />
+        <Route path="/" element={<Home />} />
         <Route path="/constructor" element={<div>constructor</div>} />
         <Route path="/constructor/cv" element={<div>CV</div>} />
         <Route

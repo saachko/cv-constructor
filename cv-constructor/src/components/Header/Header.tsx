@@ -3,7 +3,10 @@ import React from 'react';
 import Logo from 'components/Logo/Logo';
 import NavMenu from './NavMenu/NavMenu';
 
-import HeaderContainer from './Header.style';
+import {
+  HeaderContainer,
+  HeaderWrapper,
+} from './Header.style';
 
 interface HeaderProps {
   isLoggedIn: boolean,
@@ -16,11 +19,13 @@ function Header({
 }: HeaderProps) {
   return (
     <HeaderContainer>
-      <Logo />
-      <NavMenu
-        isLoggedIn={isLoggedIn}
-        setLoggedIn={setLoggedIn}
-      />
+      <HeaderWrapper>
+        <Logo />
+        <NavMenu
+          isLoggedIn={isLoggedIn}
+          setLoggedIn={setLoggedIn}
+        />
+      </HeaderWrapper>
     </HeaderContainer>
   );
 }
