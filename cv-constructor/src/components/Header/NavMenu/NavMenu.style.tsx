@@ -20,6 +20,10 @@ const NavMenuLink = styled(NavLink)`
   &:hover {
     color: ${defaultTheme.colors.primaryColor};
   }
+
+  &.active {
+    color: ${defaultTheme.colors.primaryColor};
+  }
 `;
 
 const LogInButton = styled.button`

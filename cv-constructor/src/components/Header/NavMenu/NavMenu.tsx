@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+
+import defaultTheme from 'styles/theme';
 
 import {
   NavMenuList,
@@ -17,11 +20,20 @@ function NavMenu({
   isLoggedIn,
   setLoggedIn
 }: NavMenuProps) {
+  const location = useLocation();
+
   return (
     <nav>
       <NavMenuList>
         <NavMenuItem>
-          <NavMenuLink to="/">Home</NavMenuLink>
+          <NavMenuLink
+            to="/"
+            style={({
+              color: location.pathname === ('/')
+                ? `${defaultTheme.colors.primaryColor}`
+                : `${defaultTheme.colors.text}`
+            })}
+          >Home</NavMenuLink>
         </NavMenuItem>
         <NavMenuItem>
           <NavMenuLink to="/constructor">Constructor</NavMenuLink>
