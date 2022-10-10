@@ -34,4 +34,9 @@ const description: Description[] = [
   }
 ];
 
-export default description;
+const messengers = ['Telegram', 'Viber', 'WhatsApp', 'Skype']
+
+export {
+  description,
+  messengers
+};

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import description from 'utils/variables';
+import { description } from 'utils/variables';
 
 import Button from 'components/Button/Button';
 import HomeSvg from './HomeSvg';
