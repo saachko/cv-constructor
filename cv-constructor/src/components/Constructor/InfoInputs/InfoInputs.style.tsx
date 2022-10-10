@@ -9,7 +9,7 @@ const InputsContainer = styled.div`
 `;
 
 const InputsTitle = styled.h3`
-  margin: 25px 0;
+  margin: 20px 0;
 `;
 
 const InputsWrapper = styled.div`
@@ -57,6 +57,7 @@ const TelephoneInputWrapper = styled.div`
 `;
 
 const CheckButton = styled.button`
+  height: 100%;
   margin-left: 5px;
   display: flex;
   align-items: center;

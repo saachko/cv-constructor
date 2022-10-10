@@ -73,7 +73,7 @@ function InfoInputs({
         />
       </InputsWrapper>
       <Textarea
-        labelText="About "
+        labelText="About"
         id="about"
         name="about"
         placeholder="Write a few sentences about yourself..."
@@ -109,7 +109,7 @@ function InfoInputs({
             id="messenger"
             name="messenger"
             onChange={({ target }) => setRequiredData({ ...requiredData, messengerLink: target.value })}
-            minlength={1}
+            minlength={2}
             inputWidth="240px"
           />
         </InputsWrapper>
@@ -134,13 +134,14 @@ function InfoInputs({
             onChange={({ target }) => {
               setRequiredData({ ...requiredData, linkedin: target.value });
             }}
-            minlength={1}
+            minlength={2}
             inputWidth="325px"
             disabled={hasNoLinkedIn}
           />
           <CheckButton onClick={(event) => {
             event.preventDefault();
             setHasNoLinkedIn(!hasNoLinkedIn);
+            setRequiredData({ ...requiredData, linkedin: 'no' });
           }}>
             <CheckCircleIcon sx={hasNoLinkedIn ? iconStylesTrue : iconStylesFalse} />
           </CheckButton>
@@ -149,7 +150,7 @@ function InfoInputs({
       <InputsWrapper>
         <Input
           labelText="Address"
-          type="address"
+          type="text"
           id="address"
           name="address"
           onChange={({ target }) => setRequiredData({ ...requiredData, address: target.value })}
