@@ -13,12 +13,20 @@ const ConstructorContainer = styled.main`
 `;
 
 const ConstructorForm = styled.form`
+  Button {
+    font-size: ${defaultTheme.fontSizes.text};
+    font-weight: 500;
+  }
 `;
 
 const RequiredSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  Button {
+    align-self: flex-end;
+  }
 `;
 
 const RequiredFields = styled.div`
@@ -33,10 +41,17 @@ const Note = styled.p`
   margin: 25px 10px;
 `;
 
+const AdditionalSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export {
   ConstructorContainer,
   ConstructorForm,
   RequiredSection,
   RequiredFields,
   Note,
+  AdditionalSection,
 }

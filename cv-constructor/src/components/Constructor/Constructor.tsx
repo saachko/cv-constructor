@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import { RequiredData } from 'utils/interfaces';
 
+import Button from 'components/Button/Button';
 import FileUploadInput from './FileInput/FileInput';
 import InfoInputs from './InfoInputs/InfoInputs';
+import AdditionalInputs from './AdditionalInputs/AdditionalInputs';
 
 import {
   ConstructorContainer,
@@ -11,6 +14,7 @@ import {
   RequiredSection,
   RequiredFields,
   Note,
+  AdditionalSection,
 } from './Constructor.style';
 
 interface ConstructorProps {
@@ -30,11 +34,27 @@ function Constructor({
   requiredData,
   setRequiredData
 }: ConstructorProps) {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isAdditionalShown, setIsAdditionalShown] = useState(false);
+  const [isCreationPossible, setIsCreationPossible] = useState(false);
+
+  const isDataProvided = Object.values(requiredData).every((value: string) => value);
+
+  useEffect(() => {
+    if (isDataProvided) {
+      setIsButtonDisabled(false);
+    }
+  }, [requiredData]);
+
+  useEffect(() => {
+    setIsCreationPossible(isDataProvided);
+  }, [requiredData]);
+
   return (
     <ConstructorContainer>
       <ConstructorForm>
         <RequiredSection>
-          <Note>Fields in this sections are to be filled</Note>
+          <Note>Fields in this section are to be filled</Note>
           <RequiredFields>
             <FileUploadInput
               imageUploaded={imageUploaded}
@@ -49,8 +69,25 @@ function Constructor({
               setRequiredData={setRequiredData}
             />
           </RequiredFields>
-          {Object.values(requiredData).every((value) => value) && <p>Additional fields</p>}
+          <Button
+            innerText='Show additional fields'
+            id='additional'
+            callback={() => setIsAdditionalShown(true)}
+            disabled={isButtonDisabled}
+          />
         </RequiredSection>
+        {isAdditionalShown &&
+          <AdditionalSection>
+            <Note>Fields in this section are additional, but we highly recommend to fill them</Note>
+            <AdditionalInputs />
+            <NavLink to="/constructor/cv">
+              <Button
+                innerText='Create CV'
+                id='create'
+                disabled={!isCreationPossible}
+              />
+            </NavLink>
+          </AdditionalSection>}
       </ConstructorForm>
     </ConstructorContainer>
   );
