@@ -6,6 +6,8 @@ import {
 } from 'firebase/storage';
 import { v4 } from 'uuid';
 
+import { RequiredData } from 'utils/interfaces';
+
 import SwitchAccountIcon from '@mui/icons-material/SwitchAccount';
 
 import Button from 'components/Button/Button';
@@ -28,6 +30,8 @@ interface FileUploadInputProps {
   setImageUploaded: React.Dispatch<React.SetStateAction<File | null>>,
   imageUrl: string,
   setImageUrl: React.Dispatch<React.SetStateAction<string>>,
+  requiredData: RequiredData,
+  setRequiredData: React.Dispatch<React.SetStateAction<RequiredData>>,
 }
 
 function FileUploadInput({
@@ -35,6 +39,8 @@ function FileUploadInput({
   setImageUploaded,
   imageUrl,
   setImageUrl,
+  requiredData,
+  setRequiredData,
 }: FileUploadInputProps) {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -45,6 +51,7 @@ function FileUploadInput({
       setIsLoading(true);
       getDownloadURL(snapshot.ref).then((url) => {
         setImageUrl(url);
+        setRequiredData({ ...requiredData, photo: url });
         setIsLoading(false);
       });
     });
@@ -67,13 +74,16 @@ function FileUploadInput({
             setImageUploaded((event.target.files as FileList)[0]);
           }}
         />
-        <FileLabel htmlFor="input__file">
+        <FileLabel
+          htmlFor="input__file"
+          imageUploaded={imageUploaded}
+        >
           <FileInputIconWrapper>
             <SwitchAccountIcon />
           </FileInputIconWrapper>
           <FileInputText>
             {imageUploaded
-              ? 'Choose another one'
+              ? 'Change your choice'
               : 'Choose your photo'}
           </FileInputText>
         </FileLabel>

@@ -4,6 +4,8 @@ import { ThemeProvider } from 'styled-components';
 
 import useLocalStorage from 'hooks/useLocalStorage';
 
+import { defaultRequiredData } from 'utils/variables';
+
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import Home from 'components/Home/Home';
@@ -13,11 +15,11 @@ import Constructor from 'components/Constructor/Constructor';
 import Global from 'styles/Global';
 import defaultTheme from 'styles/theme';
 
-
 function App() {
   const [isLoggedIn, setLoggedIn] = useLocalStorage('isLoggedIn', false);
   const [imageUploaded, setImageUploaded] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState('');
+  const [requiredData, setRequiredData] = useState(defaultRequiredData);
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -34,7 +36,9 @@ function App() {
             imageUploaded={imageUploaded}
             setImageUploaded={setImageUploaded}
             imageUrl={imageUrl}
-            setImageUrl={setImageUrl} />}
+            setImageUrl={setImageUrl}
+            requiredData={requiredData}
+            setRequiredData={setRequiredData} />}
         />
         <Route path="/constructor/cv" element={<div>CV</div>} />
         <Route

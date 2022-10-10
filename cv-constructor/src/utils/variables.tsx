@@ -7,7 +7,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import defaultTheme from '../styles/theme';
 
 import {
-  Description,
+  Description, RequiredData,
 } from './interfaces';
 
 const description: Description[] = [
@@ -34,9 +34,25 @@ const description: Description[] = [
   }
 ];
 
-const messengers = ['Telegram', 'Viber', 'WhatsApp', 'Skype']
+const messengers = ['Telegram', 'Viber', 'WhatsApp', 'Skype'];
+
+const defaultRequiredData: RequiredData = {
+  photo: '',
+  firstName: '',
+  lastName: '',
+  birthday: '',
+  about: '',
+  position: '',
+  tel: '',
+  messenger: 'Telegram',
+  messengerLink: '',
+  email: '',
+  linkedin: 'no',
+  address: '',
+}
 
 export {
   description,
-  messengers
+  messengers,
+  defaultRequiredData
 };

@@ -22,6 +22,7 @@ const TextareaField = styled.textarea`
   border: solid 1px ${(props) => props.theme.colors.grey};
   outline: none;
   transition: ${(props) => props.theme.effects.transition};
+  margin-bottom: 15px;
 
   &:focus, &:hover{
     border: solid 1px ${(props) => props.theme.colors.primaryColor};

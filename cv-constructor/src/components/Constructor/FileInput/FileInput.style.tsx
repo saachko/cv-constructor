@@ -2,7 +2,13 @@ import styled from 'styled-components';
 
 import defaultTheme from '../../../styles/theme';
 
+interface LabeProps {
+  imageUploaded: File | null
+}
+
 const FileUploadInputContainer = styled.div`
+  width: 210px;
+  
   Button {
     width: 210px;
     font-size: ${defaultTheme.fontSizes.text};
@@ -33,12 +39,12 @@ const FileInput = styled.input`
   position: absolute;
 `;
 
-const FileLabel = styled.label`
+const FileLabel = styled.label<LabeProps>`
   width: 100%;
   width: 210px;
   padding-right: 5px;
   height: 50px;
-  background: ${defaultTheme.colors.primaryColor};
+  background:  ${({ theme, imageUploaded }) => imageUploaded ? theme.colors.blue : theme.colors.primaryColor};
   color: ${defaultTheme.colors.textButton};
   font-size: ${defaultTheme.fontSizes.text};
   display: flex;

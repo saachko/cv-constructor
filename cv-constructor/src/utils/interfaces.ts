@@ -7,6 +7,22 @@ interface Description {
   color: string,
 }
 
+interface RequiredData {
+  photo: string,
+  firstName: string,
+  lastName: string,
+  birthday: string,
+  about: string,
+  position: string,
+  tel: string,
+  messenger: string,
+  messengerLink: string,
+  email: string,
+  linkedin: string,
+  address: string,
+}
+
 export type {
-  Description
+  Description,
+  RequiredData
 };

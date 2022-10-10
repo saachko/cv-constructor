@@ -10,11 +10,12 @@ interface InputProps {
   labelText: string,
   type: string,
   id: string,
-  placeholder: string,
+  placeholder?: string,
   name: string,
   onChange: (target: React.ChangeEvent<HTMLInputElement>) => void,
-  minlength: number,
+  minlength?: number,
   inputWidth?: string,
+  disabled?: boolean;
 }
 
 function Input({
@@ -25,10 +26,11 @@ function Input({
   name,
   onChange,
   minlength,
-  inputWidth
+  inputWidth,
+  disabled
 }: InputProps) {
   return (
-    <InputWrapper>
+    <InputWrapper width={inputWidth}>
       <Label htmlFor={name}>{labelText}</Label>
       <InputField
         type={type}
@@ -37,14 +39,17 @@ function Input({
         name={name}
         minLength={minlength}
         onChange={onChange}
-        width={inputWidth}
+        disabled={disabled}
       />
     </InputWrapper>
   );
 }
 
 Input.defaultProps = {
-  inputWidth: '280px',
+  placeholder: "",
+  minlength: 0,
+  inputWidth: '100%',
+  disabled: false,
 };
 
 export default Input;
