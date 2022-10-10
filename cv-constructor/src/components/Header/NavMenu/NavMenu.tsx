@@ -26,14 +26,7 @@ function NavMenu({
     <nav>
       <NavMenuList>
         <NavMenuItem>
-          <NavMenuLink
-            to="/"
-            style={({
-              color: location.pathname === ('/')
-                ? `${defaultTheme.colors.primaryColor}`
-                : `${defaultTheme.colors.text}`
-            })}
-          >Home</NavMenuLink>
+          <NavMenuLink to="/" end>Home</NavMenuLink>
         </NavMenuItem>
         <NavMenuItem>
           <NavMenuLink to="/constructor">Constructor</NavMenuLink>
