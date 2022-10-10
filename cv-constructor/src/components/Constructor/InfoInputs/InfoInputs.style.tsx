@@ -30,7 +30,7 @@ const TelephoneInputWrapper = styled.div`
 
   ul {
     height: 150px;
-    width: 280px;
+    width: 100%;
     font-size: ${(props) => props.theme.fontSizes.smallText};
     
     li {
