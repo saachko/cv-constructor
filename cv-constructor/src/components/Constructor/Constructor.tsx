@@ -11,6 +11,7 @@ import {
 } from 'utils/interfaces';
 
 import Button from 'components/Button/Button';
+import Modal from 'components/Modal/Modal';
 import FileUploadInput from './FileInput/FileInput';
 import InfoInputs from './InfoInputs/InfoInputs';
 import AdditionalInputs from './AdditionalInputs/AdditionalInputs';
@@ -62,6 +63,7 @@ function Constructor({
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [isAdditionalShown, setIsAdditionalShown] = useState(false);
   const [isCreationPossible, setIsCreationPossible] = useState(false);
+  const [modalActive, setModalActive] = useState(true);
 
   const isDataProvided = Object.values(requiredData).every((value: string) => value);
 
@@ -126,6 +128,11 @@ function Constructor({
             </NavLink>
           </AdditionalSection>}
       </ConstructorForm>
+      <Modal
+        active={modalActive}
+        setActive={setModalActive}
+        text="We kindly remind you that General information and Contacts are necessary to be filled. This information is minimal require to be able to create a CV"
+      />
     </ConstructorContainer>
   );
 }
