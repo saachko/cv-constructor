@@ -3,6 +3,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import defaultTheme from 'styles/theme';
+import { links } from 'utils/variables';
 
 import {
   NavMenuList,
@@ -25,15 +26,13 @@ function NavMenu({
   return (
     <nav>
       <NavMenuList>
-        <NavMenuItem>
-          <NavMenuLink to="/" end>Home</NavMenuLink>
-        </NavMenuItem>
-        <NavMenuItem>
-          <NavMenuLink to="/constructor">Constructor</NavMenuLink>
-        </NavMenuItem>
-        <NavMenuItem>
-          <NavMenuLink to="/my-cv">My CV</NavMenuLink>
-        </NavMenuItem>
+        {links.map((item) => (
+          <NavMenuItem key={item.id}>
+            <NavMenuLink to={item.path} end>
+              {item.text}
+            </NavMenuLink>
+          </NavMenuItem>
+        ))}
         <NavMenuItem>
           <LogInButton>
             {isLoggedIn ? 'Log out' : 'Log in'}

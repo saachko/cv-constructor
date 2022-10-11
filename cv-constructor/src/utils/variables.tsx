@@ -14,7 +14,26 @@ import {
   Work,
   Education,
   Languages,
+  Link,
 } from './interfaces';
+
+const links: Link[] = [
+  {
+    id: 1,
+    path: '/',
+    text: 'Home',
+  },
+  {
+    id: 2,
+    path: '/constructor',
+    text: 'Constructor',
+  },
+  {
+    id: 3,
+    path: '/my-cv',
+    text: 'My CV',
+  },
+];
 
 const description: Description[] = [
   {
@@ -130,6 +149,7 @@ const defaultLanguage: Languages = {
 };
 
 export {
+  links,
   description,
   messengers,
   defaultRequiredData,

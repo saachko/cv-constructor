@@ -1,4 +1,11 @@
 /* eslint-disable import/prefer-default-export */
+
+interface Link {
+  id: number;
+  path: string;
+  text: string;
+}
+
 interface Description {
   id: string,
   title: string,
@@ -56,6 +63,7 @@ interface Languages {
 }
 
 export type {
+  Link,
   Description,
   SelectorOption,
   RequiredData,
