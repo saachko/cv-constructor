@@ -7,7 +7,9 @@ import CheckIcon from '@mui/icons-material/Check';
 import defaultTheme from '../styles/theme';
 
 import {
-  Description, RequiredData,
+  Description,
+  RequiredData,
+  AdditionalData,
 } from './interfaces';
 
 const description: Description[] = [
@@ -47,7 +49,7 @@ const defaultRequiredData: RequiredData = {
   messenger: 'Telegram',
   messengerLink: '',
   email: '',
-  linkedin: 'no',
+  linkedin: '-',
   address: '',
 }
 
@@ -59,11 +61,20 @@ const langLevels = [
   'C1 - Advanced',
   'C2 - Proficiency',
   'Native speaker'
-]
+];
+
+const defaultAdditionalData: AdditionalData = {
+  work: [],
+  education: [],
+  languages: [],
+  skills: '',
+  projects: '',
+}
 
 export {
   description,
   messengers,
   defaultRequiredData,
-  langLevels
+  langLevels,
+  defaultAdditionalData,
 };

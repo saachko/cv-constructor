@@ -22,7 +22,36 @@ interface RequiredData {
   address: string,
 }
 
+interface AdditionalData {
+  work: Work[],
+  education: Education[],
+  languages: Languages[],
+  skills: string,
+  projects: string,
+}
+
+interface Work {
+  employer: string,
+  position: string,
+  from: string,
+  to: string,
+  tasks: string,
+}
+
+interface Education {
+  organization: string,
+  degree: string,
+  from: string,
+  to: string,
+}
+
+interface Languages {
+  language: string,
+  level: string,
+}
+
 export type {
   Description,
-  RequiredData
+  RequiredData,
+  AdditionalData
 };
