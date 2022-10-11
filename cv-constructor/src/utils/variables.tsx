@@ -10,6 +10,7 @@ import {
   Description,
   RequiredData,
   AdditionalData,
+  SelectorOption,
 } from './interfaces';
 
 const description: Description[] = [
@@ -36,7 +37,22 @@ const description: Description[] = [
   }
 ];
 
-const messengers = ['Telegram', 'Viber', 'WhatsApp', 'Skype'];
+const messengers: SelectorOption[] = [{
+  id: '1',
+  name: 'Telegram',
+},
+{
+  id: '2',
+  name: 'Viber',
+},
+{
+  id: '3',
+  name: 'WhatsApp',
+},
+{
+  id: '4',
+  name: 'Skype',
+}];
 
 const defaultRequiredData: RequiredData = {
   photo: '',
@@ -53,15 +69,34 @@ const defaultRequiredData: RequiredData = {
   address: '',
 }
 
-const langLevels = [
-  'A1 - Elementary',
-  'A2 - Pre-Intermediate',
-  'B1 - Intermediate',
-  'B2 - Upper-Intermediate',
-  'C1 - Advanced',
-  'C2 - Proficiency',
-  'Native speaker'
-];
+const langLevels: SelectorOption[] = [{
+  id: '1',
+  name: 'A1 - Elementary',
+},
+{
+  id: '2',
+  name: 'A2 - Pre-Intermediate',
+},
+{
+  id: '3',
+  name: 'B1 - Intermediate',
+},
+{
+  id: '4',
+  name: 'B2 - Upper-Intermediate',
+},
+{
+  id: '3',
+  name: 'C1 - Advanced',
+},
+{
+  id: '4',
+  name: 'C2 - Proficiency',
+},
+{
+  id: '4',
+  name: 'Native speaker',
+}];
 
 const defaultAdditionalData: AdditionalData = {
   work: [],

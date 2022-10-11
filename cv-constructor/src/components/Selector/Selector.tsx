@@ -1,10 +1,11 @@
 import React from 'react';
-import { v4 } from 'uuid';
+
+import { SelectorOption } from 'utils/interfaces';
 
 import Select from './Selector.style';
 
 interface SelectorProps {
-  options: string[],
+  options: SelectorOption[],
   onChange: (target: React.ChangeEvent<HTMLSelectElement>) => void,
   value?: string,
 }
@@ -20,11 +21,11 @@ function Selector({
       onChange={onChange}
       value={value}
     >
-      {options.map((item, index) => (
+      {options.map((item) => (
         <option
-          key={`${index + v4()}`}
-          value={item}
-        >{item}</option>
+          key={item.id}
+          value={item.name}
+        >{item.name}</option>
       ))}
     </Select>
   );

@@ -7,6 +7,11 @@ interface Description {
   color: string,
 }
 
+interface SelectorOption {
+  id: string,
+  name: string,
+}
+
 interface RequiredData {
   photo: string,
   firstName: string,
@@ -52,6 +57,7 @@ interface Languages {
 
 export type {
   Description,
+  SelectorOption,
   RequiredData,
   AdditionalData
 };
