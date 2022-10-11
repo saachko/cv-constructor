@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 } from 'uuid';
 
 import { SelectorOption } from 'utils/interfaces';
 
@@ -23,7 +24,7 @@ function Selector({
     >
       {options.map((item) => (
         <option
-          key={item.id}
+          key={`${item.id + v4()}`}
           value={item.name}
         >{item.name}</option>
       ))}
