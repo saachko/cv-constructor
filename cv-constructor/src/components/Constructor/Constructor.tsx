@@ -45,6 +45,7 @@ function Constructor({
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [isAdditionalShown, setIsAdditionalShown] = useState(false);
   const [isCreationPossible, setIsCreationPossible] = useState(false);
+  const [cvCreation, setCvCreation] = useState(false);
 
   const isDataProvided = Object.values(requiredData).every((value: string) => value);
 
@@ -89,29 +90,20 @@ function Constructor({
             <Note>Fields in this section are additional, but we highly recommend to fill them</Note>
             <AdditionalInputs
               additionalData={additionalData}
-              setAdditionalData={setAdditionalData} />
+              setAdditionalData={setAdditionalData}
+              cvCreation={cvCreation}
+            />
             <NavLink to="/constructor/cv">
               <Button
                 innerText='Create CV'
                 id='create'
                 disabled={!isCreationPossible}
+                callback={() => {
+                  setCvCreation(true);
+                }}
               />
             </NavLink>
           </AdditionalSection>}
-        <AdditionalSection>
-          <Note>Fields in this section are additional, but we highly recommend to fill them</Note>
-          <AdditionalInputs
-            additionalData={additionalData}
-            setAdditionalData={setAdditionalData}
-          />
-          <NavLink to="/constructor/cv">
-            <Button
-              innerText='Create CV'
-              id='create'
-              disabled={!isCreationPossible}
-            />
-          </NavLink>
-        </AdditionalSection>
       </ConstructorForm>
     </ConstructorContainer>
   );

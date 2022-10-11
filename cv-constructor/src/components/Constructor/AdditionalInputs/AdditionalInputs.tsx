@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-import { AdditionalData, SetState } from 'utils/interfaces';
+import {
+  AdditionalData,
+  SetState,
+} from 'utils/interfaces';
 import {
   defaultEducation,
   defaultLanguage,
@@ -25,12 +28,14 @@ import {
 
 interface AdditionalProps {
   additionalData: AdditionalData,
-  setAdditionalData: SetState<AdditionalData>
+  setAdditionalData: SetState<AdditionalData>,
+  cvCreation: boolean,
 }
 
 function AdditionalInputs({
   additionalData,
-  setAdditionalData
+  setAdditionalData,
+  cvCreation
 }: AdditionalProps) {
   const [works, setWorks] = useState([defaultWork]);
   const [educations, setEducations] = useState([defaultEducation]);
@@ -41,12 +46,22 @@ function AdditionalInputs({
     setState: SetState<T[]>
   ) => setState((prev) => [...prev, newBlock]);
 
+  useEffect(() => {
+    if (cvCreation) {
+      setAdditionalData((prev) => ({
+        ...prev,
+        works,
+        educations,
+        languages,
+      }));
+    }
+  }, [cvCreation]);
+
   return (
     <AdditionalInputsContainer>
       <InputsTitle>
         Work experience
-        <AddButton onClick={(event) => {
-          event.preventDefault();
+        <AddButton onClick={() => {
           addNewBlock({ ...defaultWork, id: v4() }, setWorks);
         }}>
           <AddCircleIcon sx={iconStyles} />
@@ -64,8 +79,7 @@ function AdditionalInputs({
       ))}
       <InputsTitle>
         Education
-        <AddButton onClick={(event) => {
-          event.preventDefault();
+        <AddButton onClick={() => {
           addNewBlock({ ...defaultEducation, id: v4() }, setEducations);
         }}>
           <AddCircleIcon sx={iconStyles} />
@@ -83,8 +97,7 @@ function AdditionalInputs({
       ))}
       <InputsTitle>
         Languages
-        <AddButton onClick={(event) => {
-          event.preventDefault();
+        <AddButton onClick={() => {
           addNewBlock({ ...defaultLanguage, id: v4() }, setLanguages);
         }}>
           <AddCircleIcon sx={iconStyles} />
