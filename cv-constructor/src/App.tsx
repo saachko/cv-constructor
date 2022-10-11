@@ -17,6 +17,7 @@ import Footer from 'components/Footer/Footer';
 import Home from 'components/Home/Home';
 import ProtectedRoute from 'components/ProtectedRoute/ProtectedRoute';
 import Constructor from 'components/Constructor/Constructor';
+import Creator from 'components/Creator/Creator';
 
 import Global from 'styles/Global';
 import defaultTheme from 'styles/theme';
@@ -71,7 +72,7 @@ function App() {
             languages={languages}
             setLanguages={setLanguages} />}
         />
-        <Route path="/constructor/cv" element={<div>CV</div>} />
+        <Route path="/constructor/cv" element={<Creator requiredData={requiredData} additionalData={additionalData} />} />
         <Route
           path="/my-cv"
           element={(
