@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { RequiredData } from 'utils/interfaces';
+import { AdditionalData, RequiredData } from 'utils/interfaces';
 
 import Button from 'components/Button/Button';
 import FileUploadInput from './FileInput/FileInput';
@@ -24,6 +24,8 @@ interface ConstructorProps {
   setImageUrl: React.Dispatch<React.SetStateAction<string>>,
   requiredData: RequiredData,
   setRequiredData: React.Dispatch<React.SetStateAction<RequiredData>>,
+  additionalData: AdditionalData,
+  setAdditionalData: React.Dispatch<React.SetStateAction<AdditionalData>>
 }
 
 function Constructor({
@@ -32,7 +34,9 @@ function Constructor({
   imageUrl,
   setImageUrl,
   requiredData,
-  setRequiredData
+  setRequiredData,
+  additionalData,
+  setAdditionalData
 }: ConstructorProps) {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [isAdditionalShown, setIsAdditionalShown] = useState(false);
@@ -79,7 +83,9 @@ function Constructor({
         {isAdditionalShown &&
           <AdditionalSection>
             <Note>Fields in this section are additional, but we highly recommend to fill them</Note>
-            <AdditionalInputs />
+            <AdditionalInputs
+              additionalData={additionalData}
+              setAdditionalData={setAdditionalData} />
             <NavLink to="/constructor/cv">
               <Button
                 innerText='Create CV'
@@ -88,6 +94,20 @@ function Constructor({
               />
             </NavLink>
           </AdditionalSection>}
+        <AdditionalSection>
+          <Note>Fields in this section are additional, but we highly recommend to fill them</Note>
+          <AdditionalInputs
+            additionalData={additionalData}
+            setAdditionalData={setAdditionalData}
+          />
+          <NavLink to="/constructor/cv">
+            <Button
+              innerText='Create CV'
+              id='create'
+              disabled={!isCreationPossible}
+            />
+          </NavLink>
+        </AdditionalSection>
       </ConstructorForm>
     </ConstructorContainer>
   );

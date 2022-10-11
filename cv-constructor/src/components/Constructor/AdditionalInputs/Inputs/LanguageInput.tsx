@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
 import Input from 'components/Input/Input';
 import Selector from 'components/Selector/Selector';
 
-import { langLevels } from 'utils/variables';
+import { defaultLanguage, langLevels } from 'utils/variables';
+import { Languages } from 'utils/interfaces';
 
 import {
   Wrapper,
@@ -22,6 +23,8 @@ function LanguageInput({
   languageBlock,
   setLanguageBlock,
 }: LangProps) {
+  const [languageData, setLanguageData] = useState<Languages>(defaultLanguage);
+
   const removeBlock = languageBlock.slice(0, -1);
 
   return (
@@ -30,13 +33,19 @@ function LanguageInput({
         labelText=""
         type="text"
         id="lang"
+        value={languageData.language}
         name="lang"
-        onChange={() => console.log('aaa')}
+        onChange={({ target }) => {
+          setLanguageData({ ...languageData, language: target.value });
+        }}
         inputWidth="65%"
       />
       <Selector
         options={langLevels}
-        onChange={() => console.log('aaa')}
+        onChange={({ target }) => {
+          setLanguageData({ ...languageData, level: target.value });
+        }}
+        value={languageData.level}
       />
       <RemoveButton onClick={(event) => {
         event.preventDefault();

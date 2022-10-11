@@ -50,7 +50,9 @@ function InfoInputs({
           id="firstName"
           value={requiredData.firstName}
           name="firstName"
-          onChange={({ target }) => setRequiredData((prev) => ({ ...prev, firstName: target.value }))}
+          onChange={({ target }) => {
+            setRequiredData((prev) => ({ ...prev, firstName: target.value }));
+          }}
           minlength={1}
           inputWidth="35%"
         />
@@ -60,7 +62,9 @@ function InfoInputs({
           id="lastName"
           value={requiredData.lastName}
           name="lastName"
-          onChange={({ target }) => setRequiredData((prev) => ({ ...prev, lastName: target.value }))}
+          onChange={({ target }) => {
+            setRequiredData((prev) => ({ ...prev, lastName: target.value }));
+          }}
           minlength={1}
           inputWidth="35%"
         />
@@ -71,7 +75,9 @@ function InfoInputs({
           value={requiredData.birthday}
           name="birthday"
           placeholder="dd/mm/yyyy"
-          onChange={({ target }) => setRequiredData((prev) => ({ ...prev, birthday: target.value }))}
+          onChange={({ target }) => {
+            setRequiredData((prev) => ({ ...prev, birthday: target.value }));
+          }}
           inputWidth="25%"
         />
       </InputsWrapper>
@@ -81,7 +87,9 @@ function InfoInputs({
         value={requiredData.about}
         name="about"
         placeholder="Write a few sentences about yourself..."
-        onChange={({ target }) => setRequiredData((prev) => ({ ...prev, about: target.value }))}
+        onChange={({ target }) => {
+          setRequiredData((prev) => ({ ...prev, about: target.value }));
+        }}
         minlength={50}
       />
       <InputsWrapper>
@@ -91,7 +99,9 @@ function InfoInputs({
           id="position"
           value={requiredData.position}
           name="position"
-          onChange={({ target }) => setRequiredData((prev) => ({ ...prev, position: target.value }))}
+          onChange={({ target }) => {
+            setRequiredData((prev) => ({ ...prev, position: target.value }));
+          }}
           minlength={2}
         />
       </InputsWrapper>
@@ -101,7 +111,9 @@ function InfoInputs({
           <IntlTelInput
             value={requiredData.tel}
             preferredCountries={['by', 'pl', 'ru']}
-            onPhoneNumberChange={(valid: boolean, number: string) => setRequiredData((prev) => ({ ...prev, tel: number }))}
+            onPhoneNumberChange={(valid: boolean, number: string) => {
+              setRequiredData((prev) => ({ ...prev, tel: number }));
+            }}
           />
         </TelephoneInputWrapper>
         <InputsWrapper>
@@ -118,7 +130,9 @@ function InfoInputs({
             id="messenger"
             value={requiredData.messengerLink}
             name="messenger"
-            onChange={({ target }) => setRequiredData((prev) => ({ ...prev, messengerLink: target.value }))}
+            onChange={({ target }) => {
+              setRequiredData((prev) => ({ ...prev, messengerLink: target.value }));
+            }}
             minlength={2}
             inputWidth="240px"
           />
@@ -132,7 +146,9 @@ function InfoInputs({
           value={requiredData.email}
           name="email"
           placeholder="e.g. example@gmail.com"
-          onChange={({ target }) => setRequiredData((prev) => ({ ...prev, email: target.value }))}
+          onChange={({ target }) => {
+            setRequiredData((prev) => ({ ...prev, email: target.value }));
+          }}
           minlength={5}
           inputWidth="47%"
         />

@@ -11,6 +11,9 @@ import {
   RequiredData,
   AdditionalData,
   SelectorOption,
+  Work,
+  Education,
+  Languages,
 } from './interfaces';
 
 const description: Description[] = [
@@ -104,7 +107,27 @@ const defaultAdditionalData: AdditionalData = {
   languages: [],
   skills: '',
   projects: '',
-}
+};
+
+const defaultWork: Work = {
+  employer: '',
+  position: '',
+  from: '',
+  to: '',
+  tasks: '',
+};
+
+const defaultEducation: Education = {
+  organization: '',
+  degree: '',
+  from: '',
+  to: '',
+};
+
+const defaultLanguage: Languages = {
+  language: '',
+  level: 'A1 - Elementary',
+};
 
 export {
   description,
@@ -112,4 +135,7 @@ export {
   defaultRequiredData,
   langLevels,
   defaultAdditionalData,
+  defaultWork,
+  defaultEducation,
+  defaultLanguage,
 };

@@ -59,5 +59,8 @@ export type {
   Description,
   SelectorOption,
   RequiredData,
-  AdditionalData
+  AdditionalData,
+  Work,
+  Education,
+  Languages
 };

@@ -3,6 +3,8 @@ import { v4 } from 'uuid';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
+import { AdditionalData } from 'utils/interfaces';
+
 import Input from 'components/Input/Input';
 import Textarea from 'components/Textarea/Textarea';
 import LanguageInput from './Inputs/LanguageInput';
@@ -16,10 +18,25 @@ import {
   InputsTitle
 } from './AdditionalInputs.style';
 
-function AdditionalInputs() {
+interface AdditionalProps {
+  additionalData: AdditionalData,
+  setAdditionalData: React.Dispatch<React.SetStateAction<AdditionalData>>
+}
+
+function AdditionalInputs({
+  additionalData,
+  setAdditionalData
+}: AdditionalProps) {
   const [languageBlock, setLanguageBlock] = useState<Array<number>>([1]);
   const [educationBlock, setEducationBlock] = useState<Array<number>>([1]);
   const [workBlock, setWorkBlock] = useState<Array<number>>([1]);
+  // const [languageData, setLanguageData] = useState<Languages>(defaultLanguage);
+
+  // useEffect(() => {
+  //   setAdditionalData((prev) => ({ ...prev, languages: [...prev.languages, languageData] }));
+  //   setLanguageData(defaultLanguage);
+  //   console.log(additionalData);
+  // }, [languageBlock])
 
   return (
     <AdditionalInputsContainer>
@@ -75,9 +92,12 @@ function AdditionalInputs() {
       <Textarea
         labelText=""
         id="skills"
+        value={additionalData.skills}
         name="skills"
         placeholder="Write a list of your hard and soft skills or describe your professional achievement..."
-        onChange={() => console.log('aaa')}
+        onChange={({ target }) => {
+          setAdditionalData((prev) => ({ ...prev, skills: target.value }));
+        }}
         minlength={50}
       />
       <InputsTitle>Projects</InputsTitle>
@@ -85,9 +105,12 @@ function AdditionalInputs() {
         labelText=""
         type="text"
         id="projects"
+        value={additionalData.projects}
         name="projects"
         placeholder="Add here a link to your portfolio or GitHub"
-        onChange={() => console.log('aaa')}
+        onChange={({ target }) => {
+          setAdditionalData((prev) => ({ ...prev, projects: target.value }));
+        }}
       />
     </AdditionalInputsContainer>
   );
