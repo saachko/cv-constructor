@@ -3,6 +3,8 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import defaultTheme from 'styles/theme';
+
+import { SetState } from 'utils/interfaces';
 import { links } from 'utils/variables';
 
 import {
@@ -14,7 +16,7 @@ import {
 
 interface NavMenuProps {
   isLoggedIn: boolean,
-  setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
+  setLoggedIn: SetState<boolean>,
 }
 
 function NavMenu({

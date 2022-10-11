@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { SetState } from 'utils/interfaces';
+
 import Logo from 'components/Logo/Logo';
 import NavMenu from './NavMenu/NavMenu';
 
@@ -10,7 +12,7 @@ import {
 
 interface HeaderProps {
   isLoggedIn: boolean,
-  setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
+  setLoggedIn: SetState<boolean>,
 }
 
 function Header({

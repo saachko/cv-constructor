@@ -3,7 +3,12 @@ import { v4 } from 'uuid';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-import { AdditionalData } from 'utils/interfaces';
+import {
+  AdditionalData,
+  Languages,
+  SetState
+} from 'utils/interfaces';
+import { defaultLanguage } from 'utils/variables';
 
 import Input from 'components/Input/Input';
 import Textarea from 'components/Textarea/Textarea';
@@ -20,7 +25,7 @@ import {
 
 interface AdditionalProps {
   additionalData: AdditionalData,
-  setAdditionalData: React.Dispatch<React.SetStateAction<AdditionalData>>
+  setAdditionalData: SetState<AdditionalData>
 }
 
 function AdditionalInputs({
@@ -30,7 +35,7 @@ function AdditionalInputs({
   const [languageBlock, setLanguageBlock] = useState<Array<number>>([1]);
   const [educationBlock, setEducationBlock] = useState<Array<number>>([1]);
   const [workBlock, setWorkBlock] = useState<Array<number>>([1]);
-  // const [languageData, setLanguageData] = useState<Languages>(defaultLanguage);
+  const [languageDataArray, setLanguageDataArray] = useState<Languages[]>([defaultLanguage]);
 
   // useEffect(() => {
   //   setAdditionalData((prev) => ({ ...prev, languages: [...prev.languages, languageData] }));
@@ -81,11 +86,14 @@ function AdditionalInputs({
           <AddCircleIcon sx={iconStyles} />
         </AddButton>
       </InputsTitle>
-      {languageBlock.map((element) => (
+      {languageBlock.map((element, index) => (
         <LanguageInput
           key={element + v4()}
           languageBlock={languageBlock}
           setLanguageBlock={setLanguageBlock}
+          languageDataArray={languageDataArray}
+          setLanguageDataArray={setLanguageDataArray}
+          index={index}
         />
       ))}
       <InputsTitle>Skills</InputsTitle>

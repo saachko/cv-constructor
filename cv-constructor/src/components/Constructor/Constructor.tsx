@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { AdditionalData, RequiredData } from 'utils/interfaces';
+import {
+  AdditionalData,
+  RequiredData,
+  SetState
+} from 'utils/interfaces';
 
 import Button from 'components/Button/Button';
 import FileUploadInput from './FileInput/FileInput';
@@ -19,13 +23,13 @@ import {
 
 interface ConstructorProps {
   imageUploaded: File | null,
-  setImageUploaded: React.Dispatch<React.SetStateAction<File | null>>,
+  setImageUploaded: SetState<File | null>,
   imageUrl: string,
-  setImageUrl: React.Dispatch<React.SetStateAction<string>>,
+  setImageUrl: SetState<string>,
   requiredData: RequiredData,
-  setRequiredData: React.Dispatch<React.SetStateAction<RequiredData>>,
+  setRequiredData: SetState<RequiredData>,
   additionalData: AdditionalData,
-  setAdditionalData: React.Dispatch<React.SetStateAction<AdditionalData>>
+  setAdditionalData: SetState<AdditionalData>
 }
 
 function Constructor({

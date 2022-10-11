@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import IntlTelInput from 'react-intl-tel-input';
 import 'react-intl-tel-input/dist/main.css';
 
-import { RequiredData } from 'utils/interfaces';
+import { RequiredData, SetState } from 'utils/interfaces';
 
 import Input from 'components/Input/Input'
 import Textarea from 'components/Textarea/Textarea';
@@ -25,7 +25,7 @@ import { messengers } from '../../../utils/variables';
 
 interface InfoInputsProps {
   requiredData: RequiredData,
-  setRequiredData: React.Dispatch<React.SetStateAction<RequiredData>>,
+  setRequiredData: SetState<RequiredData>,
 }
 
 function InfoInputs({

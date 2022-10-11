@@ -6,7 +6,7 @@ import {
 } from 'firebase/storage';
 import { v4 } from 'uuid';
 
-import { RequiredData } from 'utils/interfaces';
+import { RequiredData, SetState } from 'utils/interfaces';
 
 import SwitchAccountIcon from '@mui/icons-material/SwitchAccount';
 
@@ -27,11 +27,11 @@ import {
 
 interface FileUploadInputProps {
   imageUploaded: File | null,
-  setImageUploaded: React.Dispatch<React.SetStateAction<File | null>>,
+  setImageUploaded: SetState<File | null>,
   imageUrl: string,
-  setImageUrl: React.Dispatch<React.SetStateAction<string>>,
+  setImageUrl: SetState<string>,
   requiredData: RequiredData,
-  setRequiredData: React.Dispatch<React.SetStateAction<RequiredData>>,
+  setRequiredData: SetState<RequiredData>,
 }
 
 function FileUploadInput({

@@ -2,6 +2,8 @@ import React from 'react';
 
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
+import { SetState } from 'utils/interfaces';
+
 import Input from 'components/Input/Input';
 
 import {
@@ -13,7 +15,7 @@ import {
 
 interface EducationProps {
   educationBlock: number[],
-  setEducationBlock: React.Dispatch<React.SetStateAction<number[]>>,
+  setEducationBlock: SetState<number[]>,
 }
 
 function EducationInput({

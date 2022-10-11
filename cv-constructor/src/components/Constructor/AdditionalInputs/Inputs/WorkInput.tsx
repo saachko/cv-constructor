@@ -2,6 +2,8 @@ import React from 'react';
 
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
+import { SetState } from 'utils/interfaces';
+
 import Input from 'components/Input/Input';
 import Textarea from 'components/Textarea/Textarea';
 
@@ -14,7 +16,7 @@ import {
 
 interface WorkProps {
   workBlock: number[],
-  setWorkBlock: React.Dispatch<React.SetStateAction<number[]>>,
+  setWorkBlock: SetState<number[]>,
 }
 
 function WorkInput({

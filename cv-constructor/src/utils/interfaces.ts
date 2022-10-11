@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
+type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
 interface Link {
   id: number;
@@ -63,6 +63,7 @@ interface Languages {
 }
 
 export type {
+  SetState,
   Link,
   Description,
   SelectorOption,

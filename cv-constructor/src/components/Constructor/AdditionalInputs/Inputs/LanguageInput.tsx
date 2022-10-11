@@ -6,7 +6,7 @@ import Input from 'components/Input/Input';
 import Selector from 'components/Selector/Selector';
 
 import { defaultLanguage, langLevels } from 'utils/variables';
-import { Languages } from 'utils/interfaces';
+import { Languages, SetState } from 'utils/interfaces';
 
 import {
   Wrapper,
@@ -15,16 +15,21 @@ import {
 } from './Inputs.style';
 
 interface LangProps {
-  languageBlock: number[],
-  setLanguageBlock: React.Dispatch<React.SetStateAction<number[]>>,
+  languageBlock: Array<number>,
+  setLanguageBlock: SetState<Array<number>>,
+  languageDataArray: Array<Languages>
+  setLanguageDataArray: SetState<Array<Languages>>
+  index: number,
 }
 
 function LanguageInput({
   languageBlock,
   setLanguageBlock,
+  languageDataArray,
+  setLanguageDataArray,
+  index
 }: LangProps) {
-  const [languageData, setLanguageData] = useState<Languages>(defaultLanguage);
-
+  const [languageData, setLanguageData] = useState(defaultLanguage);
   const removeBlock = languageBlock.slice(0, -1);
 
   return (
@@ -37,6 +42,7 @@ function LanguageInput({
         name="lang"
         onChange={({ target }) => {
           setLanguageData({ ...languageData, language: target.value });
+          setLanguageDataArray((prev) => ([...prev, languageData]));
         }}
         inputWidth="65%"
       />
@@ -44,8 +50,9 @@ function LanguageInput({
         options={langLevels}
         onChange={({ target }) => {
           setLanguageData({ ...languageData, level: target.value });
+          setLanguageDataArray((prev) => ([...prev, languageData]));
         }}
-        value={languageData.level}
+        value={languageDataArray[index].level}
       />
       <RemoveButton onClick={(event) => {
         event.preventDefault();
