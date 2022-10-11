@@ -10,9 +10,10 @@ interface InputProps {
   labelText: string,
   type: string,
   id: string,
-  placeholder?: string,
   name: string,
   onChange: (target: React.ChangeEvent<HTMLInputElement>) => void,
+  value?: string;
+  placeholder?: string,
   minlength?: number,
   inputWidth?: string,
   disabled?: boolean;
@@ -22,8 +23,9 @@ function Input({
   labelText,
   type,
   id,
-  placeholder,
   name,
+  value,
+  placeholder,
   onChange,
   minlength,
   inputWidth,
@@ -35,8 +37,9 @@ function Input({
       <InputField
         type={type}
         id={id}
-        placeholder={placeholder}
         name={name}
+        value={value}
+        placeholder={placeholder}
         minLength={minlength}
         onChange={onChange}
         disabled={disabled}
@@ -46,6 +49,7 @@ function Input({
 }
 
 Input.defaultProps = {
+  value: "",
   placeholder: "",
   minlength: 0,
   inputWidth: '100%',

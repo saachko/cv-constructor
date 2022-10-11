@@ -35,8 +35,8 @@ function InfoInputs({
   const [hasNoLinkedIn, setHasNoLinkedIn] = useState(false);
 
   useEffect(() => {
-    if (!hasNoLinkedIn) {
-      setRequiredData({ ...requiredData, linkedin: 'no' });
+    if (hasNoLinkedIn) {
+      setRequiredData({ ...requiredData, linkedin: '-' });
     }
   }, [hasNoLinkedIn])
 
@@ -48,8 +48,9 @@ function InfoInputs({
           labelText="First name"
           type="text"
           id="firstName"
+          value={requiredData.firstName}
           name="firstName"
-          onChange={({ target }) => setRequiredData({ ...requiredData, firstName: target.value })}
+          onChange={({ target }) => setRequiredData((prev) => ({ ...prev, firstName: target.value }))}
           minlength={1}
           inputWidth="35%"
         />
@@ -57,8 +58,9 @@ function InfoInputs({
           labelText="Last name"
           type="text"
           id="lastName"
+          value={requiredData.lastName}
           name="lastName"
-          onChange={({ target }) => setRequiredData({ ...requiredData, lastName: target.value })}
+          onChange={({ target }) => setRequiredData((prev) => ({ ...prev, lastName: target.value }))}
           minlength={1}
           inputWidth="35%"
         />
@@ -66,18 +68,20 @@ function InfoInputs({
           labelText="Date of birth"
           type="date"
           id="birthday"
+          value={requiredData.birthday}
           name="birthday"
           placeholder="dd/mm/yyyy"
-          onChange={({ target }) => setRequiredData({ ...requiredData, birthday: target.value })}
+          onChange={({ target }) => setRequiredData((prev) => ({ ...prev, birthday: target.value }))}
           inputWidth="25%"
         />
       </InputsWrapper>
       <Textarea
         labelText="About"
         id="about"
+        value={requiredData.about}
         name="about"
         placeholder="Write a few sentences about yourself..."
-        onChange={({ target }) => setRequiredData({ ...requiredData, about: target.value })}
+        onChange={({ target }) => setRequiredData((prev) => ({ ...prev, about: target.value }))}
         minlength={50}
       />
       <InputsWrapper>
@@ -85,8 +89,9 @@ function InfoInputs({
           labelText="Preferred position"
           type="text"
           id="position"
+          value={requiredData.position}
           name="position"
-          onChange={({ target }) => setRequiredData({ ...requiredData, position: target.value })}
+          onChange={({ target }) => setRequiredData((prev) => ({ ...prev, position: target.value }))}
           minlength={2}
         />
       </InputsWrapper>
@@ -94,21 +99,26 @@ function InfoInputs({
       <InputsWrapper>
         <TelephoneInputWrapper>
           <IntlTelInput
+            value={requiredData.tel}
             preferredCountries={['by', 'pl', 'ru']}
-            onPhoneNumberChange={(valid: boolean, number: string) => setRequiredData({ ...requiredData, tel: number })}
+            onPhoneNumberChange={(valid: boolean, number: string) => setRequiredData((prev) => ({ ...prev, tel: number }))}
           />
         </TelephoneInputWrapper>
         <InputsWrapper>
           <Selector
             options={messengers}
-            onChange={({ target }) => setRequiredData({ ...requiredData, messenger: target.options[target.selectedIndex].text })}
+            onChange={({ target }) => {
+              setRequiredData((prev) => ({ ...prev, messenger: target.value }));
+            }}
+            value={requiredData.messenger}
           />
           <Input
             labelText=""
             type="text"
             id="messenger"
+            value={requiredData.messengerLink}
             name="messenger"
-            onChange={({ target }) => setRequiredData({ ...requiredData, messengerLink: target.value })}
+            onChange={({ target }) => setRequiredData((prev) => ({ ...prev, messengerLink: target.value }))}
             minlength={2}
             inputWidth="240px"
           />
@@ -119,9 +129,10 @@ function InfoInputs({
           labelText="E-mail"
           type="email"
           id="email"
+          value={requiredData.email}
           name="email"
           placeholder="e.g. example@gmail.com"
-          onChange={({ target }) => setRequiredData({ ...requiredData, email: target.value })}
+          onChange={({ target }) => setRequiredData((prev) => ({ ...prev, email: target.value }))}
           minlength={5}
           inputWidth="47%"
         />
@@ -130,9 +141,10 @@ function InfoInputs({
             labelText="LinkedIn"
             type="text"
             id="linkedin"
+            value={requiredData.linkedin}
             name="linkedin"
             onChange={({ target }) => {
-              setRequiredData({ ...requiredData, linkedin: target.value });
+              setRequiredData((prev) => ({ ...prev, linkedin: target.value }));
             }}
             minlength={2}
             inputWidth="325px"
@@ -140,8 +152,7 @@ function InfoInputs({
           />
           <CheckButton onClick={(event) => {
             event.preventDefault();
-            setHasNoLinkedIn(!hasNoLinkedIn);
-            setRequiredData({ ...requiredData, linkedin: 'no' });
+            setHasNoLinkedIn((prev) => !prev);
           }}>
             <CheckCircleIcon sx={hasNoLinkedIn ? iconStylesTrue : iconStylesFalse} />
           </CheckButton>
@@ -152,8 +163,11 @@ function InfoInputs({
           labelText="Address"
           type="text"
           id="address"
+          value={requiredData.address}
           name="address"
-          onChange={({ target }) => setRequiredData({ ...requiredData, address: target.value })}
+          onChange={({ target }) => {
+            setRequiredData((prev) => ({ ...prev, address: target.value }));
+          }}
         />
       </InputsWrapper>
     </InputsContainer>

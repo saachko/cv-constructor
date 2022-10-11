@@ -9,10 +9,11 @@ import {
 interface TextareaProps {
   labelText: string,
   id: string,
-  placeholder?: string,
   name: string,
   onChange: (target: React.ChangeEvent<HTMLTextAreaElement>) => void,
+  placeholder?: string,
   minlength?: number,
+  value?: string
 }
 
 function Textarea({
@@ -22,6 +23,7 @@ function Textarea({
   name,
   onChange,
   minlength,
+  value,
 }: TextareaProps) {
   return (
     <TextareaWrapper>
@@ -32,6 +34,7 @@ function Textarea({
         name={name}
         minLength={minlength}
         onChange={onChange}
+        value={value}
       />
     </TextareaWrapper>
   );
@@ -40,6 +43,7 @@ function Textarea({
 Textarea.defaultProps = {
   placeholder: "",
   minlength: 0,
+  value: "",
 };
 
 export default Textarea;
