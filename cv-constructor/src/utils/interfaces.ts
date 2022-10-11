@@ -35,29 +35,32 @@ interface RequiredData {
 }
 
 interface AdditionalData {
-  work: Work[],
-  education: Education[],
-  languages: Languages[],
+  works: Work[],
+  educations: Education[],
+  languages: Language[],
   skills: string,
   projects: string,
 }
 
 interface Work {
+  id: string,
   employer: string,
-  position: string,
-  from: string,
-  to: string,
+  prevPosition: string,
+  workFrom: string,
+  workTo: string,
   tasks: string,
 }
 
 interface Education {
+  id: string,
   organization: string,
   degree: string,
-  from: string,
-  to: string,
+  studyFrom: string,
+  studyTo: string,
 }
 
-interface Languages {
+interface Language {
+  id: string,
   language: string,
   level: string,
 }
@@ -71,5 +74,5 @@ export type {
   AdditionalData,
   Work,
   Education,
-  Languages
+  Language,
 };

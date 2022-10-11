@@ -2,7 +2,7 @@ import React from 'react';
 
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
-import { SetState } from 'utils/interfaces';
+import { Education, SetState } from 'utils/interfaces';
 
 import Input from 'components/Input/Input';
 
@@ -14,15 +14,21 @@ import {
 } from './Inputs.style';
 
 interface EducationProps {
-  educationBlock: number[],
-  setEducationBlock: SetState<number[]>,
+  education: Education;
+  setEducations: SetState<Education[]>;
+  removeBlock: () => void;
 }
 
 function EducationInput({
-  educationBlock,
-  setEducationBlock,
+  education,
+  setEducations,
+  removeBlock
 }: EducationProps) {
-  const removeBlock = educationBlock.slice(0, -1);
+  const updateEducation = (key: string, value: string) => {
+    setEducations((prev) =>
+      prev.map((el) => (el.id === education.id ? { ...el, [key]: value } : el))
+    );
+  };
 
   return (
     <Container>
@@ -31,15 +37,15 @@ function EducationInput({
           labelText=""
           placeholder="Your university / online-school"
           type="text"
-          id="university"
-          name="university"
-          onChange={() => console.log('aaa')}
+          id="organization"
+          name="organization"
+          value={education.organization}
+          onChange={({ target }) =>
+            updateEducation('organization', target.value)
+          }
           inputWidth="95%"
         />
-        <RemoveButton onClick={(event) => {
-          event.preventDefault();
-          setEducationBlock(removeBlock);
-        }}>
+        <RemoveButton onClick={removeBlock}>
           <RemoveCircleIcon sx={iconStyles} />
         </RemoveButton>
       </Wrapper>
@@ -47,9 +53,12 @@ function EducationInput({
         labelText=""
         placeholder="Qualification awarded / name of the course"
         type="text"
-        id="qualification"
-        name="qualification"
-        onChange={() => console.log('aaa')}
+        id="degree"
+        name="degree"
+        value={education.degree}
+        onChange={({ target }) =>
+          updateEducation('degree', target.value)
+        }
       />
       <Wrapper>
         <Input
@@ -58,7 +67,10 @@ function EducationInput({
           id="study-from"
           name="study-from"
           placeholder="dd/mm/yyyy"
-          onChange={() => console.log('aaa')}
+          value={education.studyFrom}
+          onChange={({ target }) =>
+            updateEducation('studyFrom', target.value)
+          }
         />
         <Input
           labelText="To"
@@ -66,7 +78,10 @@ function EducationInput({
           id="study-to"
           name="study-to"
           placeholder="dd/mm/yyyy"
-          onChange={() => console.log('aaa')}
+          value={education.studyTo}
+          onChange={({ target }) =>
+            updateEducation('studyTo', target.value)
+          }
         />
       </Wrapper>
     </Container>

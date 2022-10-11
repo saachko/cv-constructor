@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
 import Input from 'components/Input/Input';
 import Selector from 'components/Selector/Selector';
 
-import { defaultLanguage, langLevels } from 'utils/variables';
-import { Languages, SetState } from 'utils/interfaces';
+import { langLevels } from 'utils/variables';
+import { Language, SetState } from 'utils/interfaces';
 
 import {
   Wrapper,
@@ -15,22 +15,21 @@ import {
 } from './Inputs.style';
 
 interface LangProps {
-  languageBlock: Array<number>,
-  setLanguageBlock: SetState<Array<number>>,
-  languageDataArray: Array<Languages>
-  setLanguageDataArray: SetState<Array<Languages>>
-  index: number,
+  language: Language;
+  setLanguages: SetState<Language[]>;
+  removeBlock: () => void;
 }
 
 function LanguageInput({
-  languageBlock,
-  setLanguageBlock,
-  languageDataArray,
-  setLanguageDataArray,
-  index
+  language,
+  setLanguages,
+  removeBlock,
 }: LangProps) {
-  const [languageData, setLanguageData] = useState(defaultLanguage);
-  const removeBlock = languageBlock.slice(0, -1);
+  const updateLanguage = (key: string, value: string) => {
+    setLanguages((prev) =>
+      prev.map((el) => (el.id === language.id ? { ...el, [key]: value } : el))
+    );
+  };
 
   return (
     <Wrapper>
@@ -38,26 +37,17 @@ function LanguageInput({
         labelText=""
         type="text"
         id="lang"
-        value={languageData.language}
         name="lang"
-        onChange={({ target }) => {
-          setLanguageData({ ...languageData, language: target.value });
-          setLanguageDataArray((prev) => ([...prev, languageData]));
-        }}
+        value={language.language}
+        onChange={({ target }) => updateLanguage('language', target.value)}
         inputWidth="65%"
       />
       <Selector
         options={langLevels}
-        onChange={({ target }) => {
-          setLanguageData({ ...languageData, level: target.value });
-          setLanguageDataArray((prev) => ([...prev, languageData]));
-        }}
-        value={languageDataArray[index].level}
+        value={language.level}
+        onChange={({ target }) => updateLanguage('level', target.value)}
       />
-      <RemoveButton onClick={(event) => {
-        event.preventDefault();
-        setLanguageBlock(removeBlock);
-      }}>
+      <RemoveButton onClick={removeBlock}>
         <RemoveCircleIcon sx={iconStyles} />
       </RemoveButton>
     </Wrapper>

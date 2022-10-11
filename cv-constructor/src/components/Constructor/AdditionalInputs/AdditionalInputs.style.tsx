@@ -11,7 +11,9 @@ const InputsTitle = styled.h3`
   display: flex;
 `;
 
-const AddButton = styled.button`
+const AddButton = styled.button.attrs({
+  type: 'button',
+})`
   height: 100%;
   margin-left: 5px;
   display: flex;

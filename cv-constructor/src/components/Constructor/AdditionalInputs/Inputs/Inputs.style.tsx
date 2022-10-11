@@ -16,7 +16,9 @@ const Wrapper = styled.div`
   }
 `;
 
-const RemoveButton = styled.button`
+const RemoveButton = styled.button.attrs({
+  type: 'button',
+})`
   height: 100%;
   margin-left: 5px;
   margin-top: 5px;

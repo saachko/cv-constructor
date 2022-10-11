@@ -2,7 +2,7 @@ import React from 'react';
 
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
-import { SetState } from 'utils/interfaces';
+import { SetState, Work } from 'utils/interfaces';
 
 import Input from 'components/Input/Input';
 import Textarea from 'components/Textarea/Textarea';
@@ -15,15 +15,21 @@ import {
 } from './Inputs.style';
 
 interface WorkProps {
-  workBlock: number[],
-  setWorkBlock: SetState<number[]>,
+  work: Work;
+  setWorks: SetState<Work[]>;
+  removeBlock: () => void;
 }
 
 function WorkInput({
-  workBlock,
-  setWorkBlock,
+  work,
+  setWorks,
+  removeBlock,
 }: WorkProps) {
-  const removeBlock = workBlock.slice(0, -1);
+  const updateWork = (key: string, value: string) => {
+    setWorks((prev) =>
+      prev.map((el) => (el.id === work.id ? { ...el, [key]: value } : el))
+    );
+  };
 
   return (
     <Container>
@@ -34,13 +40,11 @@ function WorkInput({
           type="text"
           id="employer"
           name="employer"
-          onChange={() => console.log('aaa')}
+          value={work.employer}
+          onChange={({ target }) => updateWork('employer', target.value)}
           inputWidth="95%"
         />
-        <RemoveButton onClick={(event) => {
-          event.preventDefault();
-          setWorkBlock(removeBlock);
-        }}>
+        <RemoveButton onClick={removeBlock}>
           <RemoveCircleIcon sx={iconStyles} />
         </RemoveButton>
       </Wrapper>
@@ -48,26 +52,29 @@ function WorkInput({
         labelText=""
         placeholder="Occupation or position held"
         type="text"
-        id="prev-position"
-        name="prev-position"
-        onChange={() => console.log('aaa')}
+        id="prevPosition"
+        name="prevPosition"
+        value={work.prevPosition}
+        onChange={({ target }) => updateWork('prevPosition', target.value)}
       />
       <Wrapper>
         <Input
           labelText="From"
           type="date"
-          id="work-from"
-          name="work-from"
+          id="workFrom"
+          name="workFrom"
           placeholder="dd/mm/yyyy"
-          onChange={() => console.log('aaa')}
+          value={work.workFrom}
+          onChange={({ target }) => updateWork('workFrom', target.value)}
         />
         <Input
           labelText="To"
           type="date"
-          id="work-to"
-          name="work-to"
+          id="workTo"
+          name="workTo"
           placeholder="dd/mm/yyyy"
-          onChange={() => console.log('aaa')}
+          value={work.workTo}
+          onChange={({ target }) => updateWork('workTo', target.value)}
         />
       </Wrapper>
       <Textarea
@@ -75,7 +82,8 @@ function WorkInput({
         id="tasks"
         name="tasks"
         placeholder="Describe your tasks and responsibilities..."
-        onChange={() => console.log('aaa')}
+        value={work.tasks}
+        onChange={({ target }) => updateWork('tasks', target.value)}
         minlength={20}
       />
     </Container>

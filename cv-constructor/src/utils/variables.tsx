@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { v4 } from 'uuid';
+
 import BoltIcon from '@mui/icons-material/Bolt';
 import GradeIcon from '@mui/icons-material/Grade';
 import CheckIcon from '@mui/icons-material/Check';
@@ -13,7 +15,7 @@ import {
   SelectorOption,
   Work,
   Education,
-  Languages,
+  Language,
   Link,
 } from './interfaces';
 
@@ -121,29 +123,32 @@ const langLevels: SelectorOption[] = [{
 }];
 
 const defaultAdditionalData: AdditionalData = {
-  work: [],
-  education: [],
+  works: [],
+  educations: [],
   languages: [],
   skills: '',
   projects: '',
 };
 
 const defaultWork: Work = {
+  id: v4(),
   employer: '',
-  position: '',
-  from: '',
-  to: '',
+  prevPosition: '',
+  workFrom: '',
+  workTo: '',
   tasks: '',
 };
 
 const defaultEducation: Education = {
+  id: v4(),
   organization: '',
   degree: '',
-  from: '',
-  to: '',
+  studyFrom: '',
+  studyTo: '',
 };
 
-const defaultLanguage: Languages = {
+const defaultLanguage: Language = {
+  id: v4(),
   language: '',
   level: 'A1 - Elementary',
 };
