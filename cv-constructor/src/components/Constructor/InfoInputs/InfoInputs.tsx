@@ -55,6 +55,7 @@ function InfoInputs({
           }}
           minlength={1}
           inputWidth="35%"
+          required
         />
         <Input
           labelText="Last name"
@@ -67,6 +68,7 @@ function InfoInputs({
           }}
           minlength={1}
           inputWidth="35%"
+          required
         />
         <Input
           labelText="Date of birth"
@@ -79,6 +81,7 @@ function InfoInputs({
             setRequiredData((prev) => ({ ...prev, birthday: target.value }));
           }}
           inputWidth="25%"
+          required
         />
       </InputsWrapper>
       <Textarea
@@ -91,6 +94,7 @@ function InfoInputs({
           setRequiredData((prev) => ({ ...prev, about: target.value }));
         }}
         minlength={50}
+        required
       />
       <InputsWrapper>
         <Input
@@ -103,6 +107,7 @@ function InfoInputs({
             setRequiredData((prev) => ({ ...prev, position: target.value }));
           }}
           minlength={2}
+          required
         />
       </InputsWrapper>
       <InputsTitle>Contacts</InputsTitle>
@@ -135,6 +140,7 @@ function InfoInputs({
             }}
             minlength={2}
             inputWidth="240px"
+            required
           />
         </InputsWrapper>
       </InputsWrapper>
@@ -151,6 +157,7 @@ function InfoInputs({
           }}
           minlength={5}
           inputWidth="47%"
+          required
         />
         <InputsWrapper>
           <Input
@@ -184,6 +191,7 @@ function InfoInputs({
           onChange={({ target }) => {
             setRequiredData((prev) => ({ ...prev, address: target.value }));
           }}
+          required
         />
       </InputsWrapper>
     </InputsContainer>

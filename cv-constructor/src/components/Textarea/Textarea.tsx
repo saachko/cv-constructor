@@ -14,6 +14,7 @@ interface TextareaProps {
   placeholder?: string,
   minlength?: number,
   value?: string
+  required?: boolean,
 }
 
 function Textarea({
@@ -24,6 +25,7 @@ function Textarea({
   onChange,
   minlength,
   value,
+  required
 }: TextareaProps) {
   return (
     <TextareaWrapper>
@@ -35,6 +37,7 @@ function Textarea({
         minLength={minlength}
         onChange={onChange}
         value={value}
+        required={required}
       />
     </TextareaWrapper>
   );
@@ -44,6 +47,7 @@ Textarea.defaultProps = {
   placeholder: "",
   minlength: 0,
   value: "",
+  required: false,
 };
 
 export default Textarea;

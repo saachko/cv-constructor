@@ -16,7 +16,8 @@ interface InputProps {
   placeholder?: string,
   minlength?: number,
   inputWidth?: string,
-  disabled?: boolean;
+  disabled?: boolean,
+  required?: boolean,
 }
 
 function Input({
@@ -29,7 +30,8 @@ function Input({
   onChange,
   minlength,
   inputWidth,
-  disabled
+  disabled,
+  required
 }: InputProps) {
   return (
     <InputWrapper width={inputWidth}>
@@ -43,6 +45,7 @@ function Input({
         minLength={minlength}
         onChange={onChange}
         disabled={disabled}
+        required={required}
       />
     </InputWrapper>
   );
@@ -54,6 +57,7 @@ Input.defaultProps = {
   minlength: 0,
   inputWidth: '100%',
   disabled: false,
+  required: false,
 };
 
 export default Input;
