@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { v4 } from 'uuid';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import {
   AdditionalData,
+  Education,
+  Language,
   SetState,
+  Work,
 } from 'utils/interfaces';
+
 import {
   defaultEducation,
   defaultLanguage,
@@ -29,34 +33,28 @@ import {
 interface AdditionalProps {
   additionalData: AdditionalData,
   setAdditionalData: SetState<AdditionalData>,
-  cvCreation: boolean,
+  works: Work[],
+  setWorks: SetState<Work[]>,
+  educations: Education[],
+  setEducations: SetState<Education[]>,
+  languages: Language[],
+  setLanguages: SetState<Language[]>,
 }
 
 function AdditionalInputs({
   additionalData,
   setAdditionalData,
-  cvCreation
+  works,
+  setWorks,
+  educations,
+  setEducations,
+  languages,
+  setLanguages,
 }: AdditionalProps) {
-  const [works, setWorks] = useState([defaultWork]);
-  const [educations, setEducations] = useState([defaultEducation]);
-  const [languages, setLanguages] = useState([defaultLanguage]);
-
   const addNewBlock = <T,>(
     newBlock: T,
     setState: SetState<T[]>
   ) => setState((prev) => [...prev, newBlock]);
-
-  useEffect(() => {
-    if (cvCreation) {
-      setAdditionalData((prev) => ({
-        ...prev,
-        works,
-        educations,
-        languages,
-      }));
-    }
-  }, [cvCreation]);
-
   return (
     <AdditionalInputsContainer>
       <InputsTitle>

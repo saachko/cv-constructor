@@ -3,8 +3,11 @@ import { NavLink } from 'react-router-dom';
 
 import {
   AdditionalData,
+  Education,
+  Language,
   RequiredData,
-  SetState
+  SetState,
+  Work
 } from 'utils/interfaces';
 
 import Button from 'components/Button/Button';
@@ -29,7 +32,14 @@ interface ConstructorProps {
   requiredData: RequiredData,
   setRequiredData: SetState<RequiredData>,
   additionalData: AdditionalData,
-  setAdditionalData: SetState<AdditionalData>
+  setAdditionalData: SetState<AdditionalData>,
+  setCvCreation: SetState<boolean>,
+  works: Work[],
+  setWorks: SetState<Work[]>,
+  educations: Education[],
+  setEducations: SetState<Education[]>,
+  languages: Language[],
+  setLanguages: SetState<Language[]>,
 }
 
 function Constructor({
@@ -40,12 +50,18 @@ function Constructor({
   requiredData,
   setRequiredData,
   additionalData,
-  setAdditionalData
+  setAdditionalData,
+  setCvCreation,
+  works,
+  setWorks,
+  educations,
+  setEducations,
+  languages,
+  setLanguages,
 }: ConstructorProps) {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [isAdditionalShown, setIsAdditionalShown] = useState(false);
   const [isCreationPossible, setIsCreationPossible] = useState(false);
-  const [cvCreation, setCvCreation] = useState(false);
 
   const isDataProvided = Object.values(requiredData).every((value: string) => value);
 
@@ -91,7 +107,12 @@ function Constructor({
             <AdditionalInputs
               additionalData={additionalData}
               setAdditionalData={setAdditionalData}
-              cvCreation={cvCreation}
+              works={works}
+              setWorks={setWorks}
+              educations={educations}
+              setEducations={setEducations}
+              languages={languages}
+              setLanguages={setLanguages}
             />
             <NavLink to="/constructor/cv">
               <Button

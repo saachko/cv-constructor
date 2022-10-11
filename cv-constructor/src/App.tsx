@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import useLocalStorage from 'hooks/useLocalStorage';
 
-import { defaultRequiredData, defaultAdditionalData } from 'utils/variables';
+import {
+  defaultRequiredData,
+  defaultAdditionalData,
+  defaultEducation,
+  defaultLanguage,
+  defaultWork
+} from 'utils/variables';
 
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
@@ -21,6 +27,21 @@ function App() {
   const [imageUrl, setImageUrl] = useState('');
   const [requiredData, setRequiredData] = useState(defaultRequiredData);
   const [additionalData, setAdditionalData] = useState(defaultAdditionalData);
+  const [works, setWorks] = useState([defaultWork]);
+  const [educations, setEducations] = useState([defaultEducation]);
+  const [languages, setLanguages] = useState([defaultLanguage]);
+  const [cvCreation, setCvCreation] = useState(false);
+
+  useEffect(() => {
+    if (cvCreation) {
+      setAdditionalData((prev) => ({
+        ...prev,
+        works,
+        educations,
+        languages,
+      }));
+    }
+  }, [cvCreation]);
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -41,7 +62,14 @@ function App() {
             requiredData={requiredData}
             setRequiredData={setRequiredData}
             additionalData={additionalData}
-            setAdditionalData={setAdditionalData} />}
+            setAdditionalData={setAdditionalData}
+            setCvCreation={setCvCreation}
+            works={works}
+            setWorks={setWorks}
+            educations={educations}
+            setEducations={setEducations}
+            languages={languages}
+            setLanguages={setLanguages} />}
         />
         <Route path="/constructor/cv" element={<div>CV</div>} />
         <Route
