@@ -23,10 +23,6 @@ const RequiredSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  Button {
-    align-self: flex-end;
-  }
 `;
 
 const RequiredFields = styled.div`
@@ -47,6 +43,17 @@ const AdditionalSection = styled.section`
   align-items: center;
 `;
 
+const ButtonsWrapper = styled.div`
+  align-self: flex-end;
+  display: flex;
+  gap: 15px;
+`;
+
+const AdditionalButtonsWrapper = styled.div`
+  display: flex;
+  gap: 15px;
+`;
+
 export {
   ConstructorContainer,
   ConstructorForm,
@@ -54,4 +61,6 @@ export {
   RequiredFields,
   Note,
   AdditionalSection,
+  ButtonsWrapper,
+  AdditionalButtonsWrapper
 }

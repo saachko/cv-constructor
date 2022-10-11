@@ -10,6 +10,11 @@ import {
   Work
 } from 'utils/interfaces';
 
+import {
+  defaultAdditionalData,
+  defaultRequiredData
+} from 'utils/variables';
+
 import Button from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
 import FileUploadInput from './FileInput/FileInput';
@@ -23,6 +28,8 @@ import {
   RequiredFields,
   Note,
   AdditionalSection,
+  ButtonsWrapper,
+  AdditionalButtonsWrapper
 } from './Constructor.style';
 
 interface ConstructorProps {
@@ -67,6 +74,11 @@ function Constructor({
 
   const isDataProvided = Object.values(requiredData).every((value: string) => value);
 
+  const clearForm = () => {
+    setRequiredData(defaultRequiredData);
+    setAdditionalData(defaultAdditionalData);
+  }
+
   useEffect(() => {
     if (isDataProvided) {
       setIsButtonDisabled(false);
@@ -96,12 +108,19 @@ function Constructor({
               setRequiredData={setRequiredData}
             />
           </RequiredFields>
-          <Button
-            innerText='Show additional fields'
-            id='additional'
-            callback={() => setIsAdditionalShown(true)}
-            disabled={isButtonDisabled}
-          />
+          <ButtonsWrapper>
+            <Button
+              innerText='Clear form'
+              id='clear'
+              callback={clearForm}
+            />
+            <Button
+              innerText='Show additional fields'
+              id='additional'
+              callback={() => setIsAdditionalShown(true)}
+              disabled={isButtonDisabled}
+            />
+          </ButtonsWrapper>
         </RequiredSection>
         {isAdditionalShown &&
           <AdditionalSection>
@@ -116,16 +135,23 @@ function Constructor({
               languages={languages}
               setLanguages={setLanguages}
             />
-            <NavLink to="/constructor/cv">
+            <AdditionalButtonsWrapper>
               <Button
-                innerText='Create CV'
-                id='create'
-                disabled={!isCreationPossible}
-                callback={() => {
-                  setCvCreation(true);
-                }}
+                innerText='Clear form'
+                id='clear'
+                callback={clearForm}
               />
-            </NavLink>
+              <NavLink to="/constructor/cv">
+                <Button
+                  innerText='Create CV'
+                  id='create'
+                  disabled={!isCreationPossible}
+                  callback={() => {
+                    setCvCreation(true);
+                  }}
+                />
+              </NavLink>
+            </AdditionalButtonsWrapper>
           </AdditionalSection>}
       </ConstructorForm>
       <Modal
