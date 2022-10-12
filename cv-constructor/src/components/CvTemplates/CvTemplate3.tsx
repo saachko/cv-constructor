@@ -30,9 +30,7 @@ import {
   CvList,
   CvListItem,
   AdditionalBlock,
-  CvBlockLeft,
-  CvBlockRight,
-} from './CvTemplate2.style';
+} from './CvTemplate3.style';
 
 function CvTemplate1({
   requiredData,
@@ -66,10 +64,9 @@ function CvTemplate1({
           <img src={requiredData.photo} alt='cvPhoto' />
         </Photo>
         <PersonalData>
+          <Name color={themeForCv.subtitle}>{requiredData.firstName}</Name>
+          <Name color={themeForCv.subtitle}>{requiredData.lastName}</Name>
           <CvTitle color={themeForCv.title}>{requiredData.position}</CvTitle>
-          <Name color={themeForCv.subtitle}>
-            {requiredData.firstName} {requiredData.lastName}
-          </Name>
           <Contacts>
             <Contact color={themeForCv.text}>
               <PhoneIcon style={{ color: themeForCv.secondaryColor }} />
@@ -94,62 +91,58 @@ function CvTemplate1({
             </Contact>
           </Contacts>
         </PersonalData>
+        <CvBlock>
+          <CvTitle color={themeForCv.title}>About me</CvTitle>
+          <CvText color={themeForCv.text}>{requiredData.about}</CvText>
+        </CvBlock>
+        {additionalData.languages[0].language &&
+          <CvTitle color={themeForCv.title}>Languages</CvTitle>}
+        {additionalData.languages[0].language &&
+          <CvList>
+            {(additionalData.languages).map((language) => (
+              <CvListItem key={language.id}>
+                {language.language} / {language.level}
+              </CvListItem>
+            ))}
+          </CvList>
+        }
+        {additionalData.projects &&
+          <CvBlock>
+            <CvTitle color={themeForCv.title}>Projects</CvTitle>
+            <CvText color={themeForCv.text}>{additionalData.projects}</CvText>
+          </CvBlock>
+        }
       </GeneralWrapper>
       <AdditionalBlock>
-        <CvBlockLeft>
-          {additionalData.works[0].prevPosition &&
-            <CvBlock>
-              <CvTitle color={themeForCv.title}>Work experience</CvTitle>
-            </CvBlock>}
-          {additionalData.works[0].prevPosition &&
-            (additionalData.works).map((work) => (
-              <CvBlock key={work.id}>
-                <CvSubtitle color={themeForCv.subtitle}>{work.prevPosition}</CvSubtitle>
-                <CvSubtitle1 color={themeForCv.subtitle1}>{work.employer}</CvSubtitle1>
-                <CvTextBold color={themeForCv.text}>{work.workFrom} / {work.workTo}</CvTextBold>
-                <CvText color={themeForCv.text}>{work.tasks}</CvText>
-              </CvBlock>
-            ))}
-          {additionalData.educations[0].degree &&
-            <CvTitle color={themeForCv.title}>Education and training</CvTitle>}
-          {additionalData.educations[0].degree &&
-            (additionalData.educations).map((education) => (
-              <CvBlock key={education.id}>
-                <CvSubtitle color={themeForCv.subtitle}>{education.degree}</CvSubtitle>
-                <CvSubtitle1 color={themeForCv.subtitle1}>{education.organization}</CvSubtitle1>
-                <CvTextBold color={themeForCv.text}>{education.studyFrom} / {education.studyTo}</CvTextBold>
-              </CvBlock>
-            ))}
-        </CvBlockLeft>
-        <CvBlockRight color={themeForCv.additionalColor}>
+        {additionalData.works[0].prevPosition &&
           <CvBlock>
-            <CvTitle color={themeForCv.title}>About me</CvTitle>
-            <CvText color={themeForCv.text}>{requiredData.about}</CvText>
+            <CvTitle color={themeForCv.title}>Work experience</CvTitle>
+          </CvBlock>}
+        {additionalData.works[0].prevPosition &&
+          (additionalData.works).map((work) => (
+            <CvBlock key={work.id}>
+              <CvSubtitle color={themeForCv.subtitle}>{work.prevPosition}</CvSubtitle>
+              <CvSubtitle1 color={themeForCv.subtitle1}>{work.employer}</CvSubtitle1>
+              <CvTextBold color={themeForCv.text}>{work.workFrom} / {work.workTo}</CvTextBold>
+              <CvText color={themeForCv.text}>{work.tasks}</CvText>
+            </CvBlock>
+          ))}
+        {additionalData.educations[0].degree &&
+          <CvTitle color={themeForCv.title}>Education and training</CvTitle>}
+        {additionalData.educations[0].degree &&
+          (additionalData.educations).map((education) => (
+            <CvBlock key={education.id}>
+              <CvSubtitle color={themeForCv.subtitle}>{education.degree}</CvSubtitle>
+              <CvSubtitle1 color={themeForCv.subtitle1}>{education.organization}</CvSubtitle1>
+              <CvTextBold color={themeForCv.text}>{education.studyFrom} / {education.studyTo}</CvTextBold>
+            </CvBlock>
+          ))}
+        {additionalData.skills &&
+          <CvBlock>
+            <CvTitle color={themeForCv.title}>Skills</CvTitle>
+            <CvText color={themeForCv.text}>{additionalData.skills}</CvText>
           </CvBlock>
-          {additionalData.languages[0].language &&
-            <CvTitle color={themeForCv.title}>Languages</CvTitle>}
-          {additionalData.languages[0].language &&
-            <CvList>
-              {(additionalData.languages).map((language) => (
-                <CvListItem key={language.id}>
-                  {language.language} / {language.level}
-                </CvListItem>
-              ))}
-            </CvList>
-          }
-          {additionalData.skills &&
-            <CvBlock>
-              <CvTitle color={themeForCv.title}>Skills</CvTitle>
-              <CvText color={themeForCv.text}>{additionalData.skills}</CvText>
-            </CvBlock>
-          }
-          {additionalData.projects &&
-            <CvBlock>
-              <CvTitle color={themeForCv.title}>Projects</CvTitle>
-              <CvText color={themeForCv.text}>{additionalData.projects}</CvText>
-            </CvBlock>
-          }
-        </CvBlockRight>
+        }
       </AdditionalBlock>
     </CvPage >
   );

@@ -11,6 +11,7 @@ import { colorThemeSky } from 'styles/themesForCv'
 import Button from 'components/Button/Button';
 import CvTemplate1 from 'components/CvTemplates/CvTemplate1';
 import CvTemplate2 from 'components/CvTemplates/CvTemplate2';
+import CvTemplate3 from 'components/CvTemplates/CvTemplate3';
 
 import {
   CreatorContainer,
@@ -53,7 +54,7 @@ function Creator({
       <Note>Please choose your color theme</Note>
       <CvWrapper>
         <CvToPrint ref={pdfRef}>
-          <CvTemplate2
+          <CvTemplate3
             requiredData={requiredData}
             additionalData={additionalData}
             themeForCv={colorThemeForCv}
