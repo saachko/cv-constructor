@@ -122,14 +122,6 @@ const langLevels: SelectorOption[] = [{
   name: 'Native speaker',
 }];
 
-const defaultAdditionalData: AdditionalData = {
-  works: [],
-  educations: [],
-  languages: [],
-  skills: '',
-  projects: '',
-};
-
 const defaultWork: Work = {
   id: v4(),
   employer: '',
@@ -151,6 +143,20 @@ const defaultLanguage: Language = {
   id: v4(),
   language: '',
   level: 'A1 - Elementary',
+};
+
+const defaultAdditionalData: AdditionalData = {
+  works: [
+    defaultWork,
+  ],
+  educations: [
+    defaultEducation,
+  ],
+  languages: [
+    defaultLanguage,
+  ],
+  skills: '',
+  projects: '',
 };
 
 export {

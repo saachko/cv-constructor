@@ -1,9 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
 
 import { AdditionalData, RequiredData } from 'utils/interfaces';
+
+import { colorThemeSky } from 'styles/themesForCv'
 
 import Button from 'components/Button/Button';
 import CvTemplate1 from 'components/CvTemplates/CvTemplate1';
@@ -37,6 +38,7 @@ function Creator({
           <CvTemplate1
             requiredData={requiredData}
             additionalData={additionalData}
+            themeForCv={colorThemeSky}
           />
         </CvToPrint>
       </CvWrapper>
