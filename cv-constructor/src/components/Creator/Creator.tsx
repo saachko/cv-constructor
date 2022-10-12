@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import jsPDF from 'jspdf';
+import { useReactToPrint } from 'react-to-print';
 
 import { AdditionalData, RequiredData } from 'utils/interfaces';
 
@@ -26,21 +26,18 @@ function Creator({
 }: CreatorProps) {
   const pdfRef = useRef<HTMLDivElement>(null)
 
-  const generatePDF = () => {
-    // eslint-disable-next-line new-cap
-    const doc = new jsPDF('p', 'pt', 'a4');
-    doc.html((pdfRef.current as HTMLElement), {
-      callback(pdf) {
-        pdf.save('cv.pdf');
-      }
-    });
-  }
+  const handlePrint = useReactToPrint({
+    content: () => pdfRef.current,
+  });
 
   return (
     <CreatorContainer>
       <CvWrapper>
         <CvToPrint ref={pdfRef}>
-          <CvTemplate1 />
+          <CvTemplate1
+            requiredData={requiredData}
+            additionalData={additionalData}
+          />
         </CvToPrint>
       </CvWrapper>
       <ButtonsWrapper>
@@ -51,9 +48,9 @@ function Creator({
           />
         </NavLink>
         <Button
-          innerText='PDF'
+          innerText='Print / save in PDF'
           id='pdf'
-          callback={generatePDF}
+          callback={handlePrint}
         />
       </ButtonsWrapper>
     </CreatorContainer>

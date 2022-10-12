@@ -72,7 +72,11 @@ function App() {
             languages={languages}
             setLanguages={setLanguages} />}
         />
-        <Route path="/constructor/cv" element={<Creator requiredData={requiredData} additionalData={additionalData} />} />
+        <Route path="/constructor/cv" element={
+          <Creator
+            requiredData={requiredData}
+            additionalData={additionalData}
+          />} />
         <Route
           path="/my-cv"
           element={(

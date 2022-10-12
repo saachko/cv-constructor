@@ -65,6 +65,11 @@ interface Language {
   level: string,
 }
 
+interface CvTemplateProps {
+  requiredData: RequiredData,
+  additionalData: AdditionalData,
+}
+
 export type {
   SetState,
   Link,
@@ -75,4 +80,5 @@ export type {
   Work,
   Education,
   Language,
+  CvTemplateProps,
 };

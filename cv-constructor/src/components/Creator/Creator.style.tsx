@@ -14,6 +14,7 @@ const CvWrapper = styled.div`
 `;
 
 const CvToPrint = styled.div`
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.1);
 `;
 
 const ButtonsWrapper = styled.div`
