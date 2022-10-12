@@ -70,6 +70,8 @@ function Modal({
                     works,
                     educations,
                     languages,
+                    skills: data.skills,
+                    projects: data.projects,
                   }));
                 }
                 setActive(false)
