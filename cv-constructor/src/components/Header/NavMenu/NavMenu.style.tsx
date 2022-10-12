@@ -26,23 +26,8 @@ const NavMenuLink = styled(NavLink)`
   }
 `;
 
-const LogInButton = styled.button`
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  padding: 10px;
-  font-size: ${defaultTheme.fontSizes.text};
-  color: ${defaultTheme.colors.text};
-  transition: ${defaultTheme.effects.transition};
-
-  &:hover {
-    color: ${defaultTheme.colors.primaryColor};
-  }
-`;
-
 export {
   NavMenuList,
   NavMenuItem,
   NavMenuLink,
-  LogInButton,
 }

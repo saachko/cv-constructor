@@ -11,18 +11,9 @@ import {
   NavMenuList,
   NavMenuItem,
   NavMenuLink,
-  LogInButton,
 } from './NavMenu.style';
 
-interface NavMenuProps {
-  isLoggedIn: boolean,
-  setLoggedIn: SetState<boolean>,
-}
-
-function NavMenu({
-  isLoggedIn,
-  setLoggedIn
-}: NavMenuProps) {
+function NavMenu() {
   const location = useLocation();
 
   return (
@@ -35,11 +26,6 @@ function NavMenu({
             </NavMenuLink>
           </NavMenuItem>
         ))}
-        <NavMenuItem>
-          <LogInButton>
-            {isLoggedIn ? 'Log out' : 'Log in'}
-          </LogInButton>
-        </NavMenuItem>
       </NavMenuList>
     </nav>
   );

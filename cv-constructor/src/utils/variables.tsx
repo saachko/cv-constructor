@@ -37,11 +37,6 @@ const links: Link[] = [
     path: '/constructor',
     text: 'Constructor',
   },
-  {
-    id: 3,
-    path: '/my-cv',
-    text: 'My CV',
-  },
 ];
 
 const description: Description[] = [
