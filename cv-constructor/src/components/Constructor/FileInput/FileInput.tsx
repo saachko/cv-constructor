@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ref,
   uploadBytes,
@@ -43,6 +43,13 @@ function FileUploadInput({
   setRequiredData,
 }: FileUploadInputProps) {
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('requiredData')) {
+      const data = (JSON.parse(localStorage.getItem('requiredData') as string) as RequiredData);
+      setImageUrl(data.photo);
+    }
+  }, [])
 
   const uploadFile = () => {
     if (imageUploaded == null) return;

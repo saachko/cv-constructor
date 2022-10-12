@@ -18,6 +18,7 @@ import Home from 'components/Home/Home';
 import ProtectedRoute from 'components/ProtectedRoute/ProtectedRoute';
 import Constructor from 'components/Constructor/Constructor';
 import Creator from 'components/Creator/Creator';
+import Modal from 'components/Modal/ModalLocalStorage';
 
 import Global from 'styles/Global';
 import defaultTheme from 'styles/theme';
@@ -32,6 +33,13 @@ function App() {
   const [educations, setEducations] = useState([defaultEducation]);
   const [languages, setLanguages] = useState([defaultLanguage]);
   const [cvCreation, setCvCreation] = useState(false);
+  const [isModalActive, setIsModalActive] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('requiredData')) {
+      setIsModalActive(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (cvCreation) {
@@ -88,6 +96,19 @@ function App() {
         <Route path="*" element={<div>not found</div>} />
       </Routes>
       <Footer />
+      <Modal
+        active={isModalActive}
+        setActive={setIsModalActive}
+        setRequiredData={setRequiredData}
+        setAdditionalData={setAdditionalData}
+        works={works}
+        setWorks={setWorks}
+        educations={educations}
+        setEducations={setEducations}
+        languages={languages}
+        setLanguages={setLanguages}
+        text="Would you like to continue CV creation with your previous data?"
+      />
     </ThemeProvider>
   );
 }

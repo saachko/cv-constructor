@@ -32,6 +32,7 @@ const ModalWindow = styled.div<ModalProps>`
   border-radius: 5px;
   background-color: ${defaultTheme.colors.backgroundWhite};
   width: 500px;
+  height: 175px;
   transition: ${defaultTheme.effects.transition};
   transform: scale(0.9);
   display: flex;
@@ -46,6 +47,20 @@ const ModalWindow = styled.div<ModalProps>`
   }
 `;
 
+const ButtonsWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px; 
+
+  Button#cleanLocal,
+  Button#useLocal {
+    margin-top: 10px;
+    min-width: 180px;
+  }
+`;
+
 const ModalText = styled.p`
   margin-bottom: 20px;
 `;
@@ -53,5 +68,6 @@ const ModalText = styled.p`
 export {
   Shadow,
   ModalWindow,
-  ModalText
+  ModalText,
+  ButtonsWrapper
 };
