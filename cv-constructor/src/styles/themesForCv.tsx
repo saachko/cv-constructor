@@ -10,7 +10,39 @@ const colorThemeSky: CvTheme = {
   additionalColor: '#004F69',
 }
 
+const colorThemeSun: CvTheme = {
+  title: '#ca6d18',
+  subtitle: '#222222',
+  subtitle1: '#797979',
+  text: '#222222',
+  primaryColor: '#fbf2e4',
+  secondaryColor: '#ca6d18',
+  additionalColor: '#f9f9f9',
+}
+
+const colorThemeGrass: CvTheme = {
+  title: '#509679',
+  subtitle: '#222222',
+  subtitle1: '#96c7b1',
+  text: '#222222',
+  primaryColor: '#cfeee9',
+  secondaryColor: '#509679',
+  additionalColor: '#56694b',
+}
+
+const colorThemeCandy: CvTheme = {
+  title: '#a27e89',
+  subtitle: '#BF79B9',
+  subtitle1: '#453131',
+  text: '#220002',
+  primaryColor: '#ffe3fb',
+  secondaryColor: '#BF79B9',
+  additionalColor: '#f182a3',
+}
+
 export {
-  // eslint-disable-next-line import/prefer-default-export
   colorThemeSky,
+  colorThemeSun,
+  colorThemeGrass,
+  colorThemeCandy,
 }

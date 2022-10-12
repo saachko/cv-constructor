@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+import defaultTheme from 'styles/theme';
+
+import { ColorProps } from 'utils/interfaces';
+
 const CreatorContainer = styled.main`
   display: flex;
   flex-direction: column;
@@ -11,6 +15,7 @@ const CreatorContainer = styled.main`
 const CvWrapper = styled.div`
   padding: 10px;
   max-width: 1024px;
+  margin-top: -60px;
 `;
 
 const CvToPrint = styled.div`
@@ -28,9 +33,38 @@ const ButtonsWrapper = styled.div`
   gap: 15px;
 `;
 
+const ThemeButtons = styled.div`
+  display: flex;
+  gap: 5px;
+  margin-top: 15px;
+`;
+
+const ThemeButton = styled.button<ColorProps>`
+  background-color: ${({ color }) => color};
+  display: block;
+  border-radius: 3px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const Note = styled.p`
+  color: ${defaultTheme.colors.textHighlighted};
+  margin: 0px 10px;
+`;
+
 export {
   CreatorContainer,
   CvWrapper,
   CvToPrint,
   ButtonsWrapper,
+  ThemeButtons,
+  ThemeButton,
+  Note,
 };

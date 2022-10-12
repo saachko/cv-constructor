@@ -85,6 +85,12 @@ interface CvTheme {
   additionalColor: string,
 }
 
+interface CvThemeButton {
+  id: string,
+  theme: CvTheme,
+  color: string,
+}
+
 export type {
   SetState,
   Link,
@@ -98,4 +104,5 @@ export type {
   CvTemplateProps,
   ColorProps,
   CvTheme,
+  CvThemeButton,
 };

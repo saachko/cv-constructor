@@ -6,6 +6,12 @@ import BoltIcon from '@mui/icons-material/Bolt';
 import GradeIcon from '@mui/icons-material/Grade';
 import CheckIcon from '@mui/icons-material/Check';
 
+import {
+  colorThemeCandy,
+  colorThemeGrass,
+  colorThemeSky,
+  colorThemeSun
+} from 'styles/themesForCv';
 import defaultTheme from '../styles/theme';
 
 import {
@@ -17,6 +23,7 @@ import {
   Education,
   Language,
   Link,
+  CvThemeButton,
 } from './interfaces';
 
 const links: Link[] = [
@@ -159,6 +166,29 @@ const defaultAdditionalData: AdditionalData = {
   projects: '',
 };
 
+const cvThemeButtons: CvThemeButton[] = [
+  {
+    id: 'sky',
+    theme: colorThemeSky,
+    color: '#B8EBFD'
+  },
+  {
+    id: 'sun',
+    theme: colorThemeSun,
+    color: '#F1E4C6'
+  },
+  {
+    id: 'grass',
+    theme: colorThemeGrass,
+    color: '#509679'
+  },
+  {
+    id: 'candy',
+    theme: colorThemeCandy,
+    color: '#ffe3fb'
+  }
+];
+
 export {
   links,
   description,
@@ -169,4 +199,5 @@ export {
   defaultWork,
   defaultEducation,
   defaultLanguage,
+  cvThemeButtons,
 };

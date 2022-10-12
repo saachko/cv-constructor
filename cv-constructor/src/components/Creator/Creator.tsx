@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
 
 import { AdditionalData, RequiredData } from 'utils/interfaces';
+import { cvThemeButtons } from 'utils/variables';
 
 import { colorThemeSky } from 'styles/themesForCv'
 
@@ -14,6 +15,9 @@ import {
   CvWrapper,
   CvToPrint,
   ButtonsWrapper,
+  ThemeButtons,
+  ThemeButton,
+  Note,
 } from './Creator.style';
 
 interface CreatorProps {
@@ -25,6 +29,8 @@ function Creator({
   requiredData,
   additionalData
 }: CreatorProps) {
+  const [colorThemeForCv, setColorThemeForCv] = useState(colorThemeSky);
+
   const pdfRef = useRef<HTMLDivElement>(null)
 
   const handlePrint = useReactToPrint({
@@ -33,12 +39,22 @@ function Creator({
 
   return (
     <CreatorContainer>
+      <ThemeButtons>
+        {cvThemeButtons.map((button) => (
+          <ThemeButton
+            key={button.id}
+            color={button.color}
+            onClick={() => setColorThemeForCv(button.theme)}
+          />
+        ))}
+      </ThemeButtons>
+      <Note>Please choose your color theme</Note>
       <CvWrapper>
         <CvToPrint ref={pdfRef}>
           <CvTemplate1
             requiredData={requiredData}
             additionalData={additionalData}
-            themeForCv={colorThemeSky}
+            themeForCv={colorThemeForCv}
           />
         </CvToPrint>
       </CvWrapper>
