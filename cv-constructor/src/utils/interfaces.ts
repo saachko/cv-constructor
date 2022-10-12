@@ -1,9 +1,9 @@
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
 interface Link {
-  id: number;
-  path: string;
-  text: string;
+  id: number,
+  path: string,
+  text: string,
 }
 
 interface Description {
@@ -68,6 +68,21 @@ interface Language {
 interface CvTemplateProps {
   requiredData: RequiredData,
   additionalData: AdditionalData,
+  themeForCv: CvTheme,
+}
+
+interface ColorProps {
+  color: string,
+}
+
+interface CvTheme {
+  title: string,
+  subtitle: string,
+  subtitle1: string,
+  text: string,
+  primaryColor: string,
+  secondaryColor: string,
+  additionalColor: string,
 }
 
 export type {
@@ -81,4 +96,6 @@ export type {
   Education,
   Language,
   CvTemplateProps,
+  ColorProps,
+  CvTheme,
 };
