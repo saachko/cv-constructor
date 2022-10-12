@@ -57,7 +57,7 @@ function CvTemplate1({
         setMessengerIcon(<TelegramIcon style={{ color: themeForCv.secondaryColor }} />);
         break;
     }
-  }, []);
+  }, [themeForCv]);
 
   return (
     <CvPage>
@@ -128,10 +128,7 @@ function CvTemplate1({
       {additionalData.languages[0].language &&
         <CvList>
           {(additionalData.languages).map((language) => (
-            <CvListItem
-              key={language.id}
-              color={themeForCv.primaryColor}
-            >
+            <CvListItem key={language.id}>
               {language.language} / {language.level}
             </CvListItem>
           ))}

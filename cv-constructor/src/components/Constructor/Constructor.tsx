@@ -148,6 +148,8 @@ function Constructor({
                   disabled={!isCreationPossible}
                   callback={() => {
                     setCvCreation(true);
+                    localStorage.setItem('requiredData', JSON.stringify(requiredData));
+                    localStorage.setItem('additionalData', JSON.stringify(additionalData));
                   }}
                 />
               </NavLink>

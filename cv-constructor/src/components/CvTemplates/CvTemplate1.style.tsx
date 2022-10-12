@@ -101,18 +101,11 @@ const CvTextBold = styled.p<ColorProps>`
 `;
 
 const CvList = styled.ul`
-  list-style: none;
+  list-style-type: circle;
+  padding-left: 15px;
 `;
 
-const CvListItem = styled.li<ColorProps>`
-  &::before {
-  content: "";
-  color: ${({ color }) => color};
-  font-weight: bold;
-  display: inline-block; 
-  width: 1em;
-  margin-left: -1em;
-  }
+const CvListItem = styled.li`
 `;
 
 export {
