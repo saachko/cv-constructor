@@ -17,7 +17,7 @@ const colorThemeSun: CvTheme = {
   text: '#222222',
   primaryColor: '#fbf2e4',
   secondaryColor: '#ca6d18',
-  additionalColor: '#f9f9f9',
+  additionalColor: '#f3e979',
 }
 
 const colorThemeGrass: CvTheme = {
