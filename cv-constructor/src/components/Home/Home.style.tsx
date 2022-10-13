@@ -93,6 +93,7 @@ const DescriptionItems = styled.div`
   justify-content: center;
   gap: 20px;
   margin-top: 30px;
+  max-width: 800px;
 `;
 
 const DescriptionItem = styled.div`

@@ -49,7 +49,6 @@ function LogoSvg() {
         </clipPath>
       </defs>
     </svg>
-
   );
 }
 

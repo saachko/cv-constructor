@@ -5,6 +5,9 @@ import { v4 } from 'uuid';
 import BoltIcon from '@mui/icons-material/Bolt';
 import GradeIcon from '@mui/icons-material/Grade';
 import CheckIcon from '@mui/icons-material/Check';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
+import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
+import GradingIcon from '@mui/icons-material/Grading';
 
 import {
   colorThemeCandy,
@@ -60,6 +63,27 @@ const description: Description[] = [
     text: "Only necessary information is asked in our form in order to make your CV useful and informative for HR.",
     icon: <CheckIcon />,
     color: `${defaultTheme.colors.blue}`,
+  },
+  {
+    id: '4',
+    title: 'Colorful',
+    text: "We suggest you four unique color themes for decorating your CV.",
+    icon: <ColorLensIcon />,
+    color: `${defaultTheme.colors.green}`,
+  },
+  {
+    id: '5',
+    title: 'Easy to print',
+    text: "After creating CV you will be suggested to print it or just save as PDF on your computer.",
+    icon: <LocalPrintshopIcon />,
+    color: `${defaultTheme.colors.grey}`,
+  },
+  {
+    id: '6',
+    title: 'Standardized',
+    text: "While developing this constructor we were focused at European resume standards.",
+    icon: <GradingIcon />,
+    color: `${defaultTheme.colors.pink}`,
   }
 ];
 
