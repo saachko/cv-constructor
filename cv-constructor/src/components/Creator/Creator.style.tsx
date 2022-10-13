@@ -114,7 +114,7 @@ const CvToPrint = styled.div`
 
   @media print {
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.0);
-    margin: -350px 0;
+    margin: 0;
     transform: scale(1);
   }
 `;
