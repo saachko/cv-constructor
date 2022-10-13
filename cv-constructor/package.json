@@ -2,6 +2,7 @@
   "name": "my-build",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://saachko.github.io/cv-constructor",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
