@@ -13,6 +13,7 @@ import Home from 'components/Home/Home';
 import Constructor from 'components/Constructor/Constructor';
 import Creator from 'components/Creator/Creator';
 import Modal from 'components/Modal/ModalLocalStorage';
+import NotFound from 'components/NotFound/NotFound';
 
 import Global from 'styles/Global';
 import defaultTheme from 'styles/theme';
@@ -54,7 +55,7 @@ function App() {
             requiredData={requiredData}
             additionalData={additionalData}
           />} />
-        <Route path="*" element={<div>not found</div>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <Modal
