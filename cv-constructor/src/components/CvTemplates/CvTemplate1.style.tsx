@@ -36,6 +36,8 @@ const GeneralWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-top: 5px;
+  margin-bottom: 60px;
 `;
 
 const Photo = styled.div`

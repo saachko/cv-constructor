@@ -1,8 +1,48 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import defaultTheme from 'styles/theme';
 
 import { ColorProps } from 'utils/interfaces';
+
+interface TemplateButtonProps {
+  active: boolean,
+}
+
+const buttonAnimationLeft = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-20px);
+  }
+  50% {
+    transform: translateX(-15px);
+  }
+  75% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+`;
+
+const buttonAnimationRight = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(20px);
+  }
+  50% {
+    transform: translateX(15px);
+  }
+  75% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+`;
 
 const CreatorContainer = styled.main`
   display: flex;
@@ -16,6 +56,7 @@ const CvWrapper = styled.div`
   padding: 10px;
   max-width: 1024px;
   margin-top: -60px;
+  display: flex;
 `;
 
 const CvToPrint = styled.div`
@@ -33,7 +74,7 @@ const ButtonsWrapper = styled.div`
   gap: 15px;
 `;
 
-const ThemeButtons = styled.div`
+const ControlButtons = styled.div`
   display: flex;
   gap: 5px;
   margin-top: 15px;
@@ -59,12 +100,38 @@ const Note = styled.p`
   margin: 0px 10px;
 `;
 
+const TemplateButton = styled.button<TemplateButtonProps>`
+  width: 100px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  margin: 0 15px;
+  transition: ${defaultTheme.effects.transition};
+
+  &#prev:hover {
+    animation: ${buttonAnimationLeft} 1s linear infinite;
+  }
+
+  &#prev {
+    animation: ${({ active }) => active ? css`${buttonAnimationLeft} 1s linear infinite` : ''};
+  }
+
+  &#next:hover {
+    animation: ${buttonAnimationRight} 1s linear infinite;
+  }
+
+  &#next {
+    animation: ${({ active }) => active ? css`${buttonAnimationRight} 1s linear infinite` : ''};
+  }
+`;
+
 export {
   CreatorContainer,
   CvWrapper,
   CvToPrint,
   ButtonsWrapper,
-  ThemeButtons,
+  ControlButtons,
   ThemeButton,
   Note,
+  TemplateButton,
 };
