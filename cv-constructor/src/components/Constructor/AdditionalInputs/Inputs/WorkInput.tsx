@@ -2,7 +2,7 @@ import React from 'react';
 
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
-import { SetState, Work } from 'utils/interfaces';
+import { AdditionalData, SetState, Work } from 'utils/interfaces';
 
 import Input from 'components/Input/Input';
 import Textarea from 'components/Textarea/Textarea';
@@ -16,20 +16,22 @@ import {
 
 interface WorkProps {
   work: Work;
-  setWorks: SetState<Work[]>;
+  setAdditionalData: SetState<AdditionalData>;
   removeBlock: () => void;
 }
 
 function WorkInput({
   work,
-  setWorks,
+  setAdditionalData,
   removeBlock,
 }: WorkProps) {
-  const updateWork = (key: string, value: string) => {
-    setWorks((prev) =>
-      prev.map((el) => (el.id === work.id ? { ...el, [key]: value } : el))
-    );
-  };
+  const updateWork = (key: string, value: string) =>
+    setAdditionalData((prev) => ({
+      ...prev,
+      works: prev.works.map((el) =>
+        el.id === work.id ? { ...el, [key]: value } : el
+      ),
+    }));
 
   return (
     <Container>

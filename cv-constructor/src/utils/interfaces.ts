@@ -91,6 +91,11 @@ interface CvThemeButton {
   color: string,
 }
 
+interface Template {
+  id: number,
+  template: JSX.Element,
+}
+
 export type {
   SetState,
   Link,
@@ -105,4 +110,5 @@ export type {
   ColorProps,
   CvTheme,
   CvThemeButton,
+  Template,
 };

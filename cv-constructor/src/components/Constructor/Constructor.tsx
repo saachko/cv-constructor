@@ -3,11 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 import {
   AdditionalData,
-  Education,
-  Language,
   RequiredData,
   SetState,
-  Work
 } from 'utils/interfaces';
 
 import {
@@ -41,13 +38,6 @@ interface ConstructorProps {
   setRequiredData: SetState<RequiredData>,
   additionalData: AdditionalData,
   setAdditionalData: SetState<AdditionalData>,
-  setCvCreation: SetState<boolean>,
-  works: Work[],
-  setWorks: SetState<Work[]>,
-  educations: Education[],
-  setEducations: SetState<Education[]>,
-  languages: Language[],
-  setLanguages: SetState<Language[]>,
 }
 
 function Constructor({
@@ -59,13 +49,6 @@ function Constructor({
   setRequiredData,
   additionalData,
   setAdditionalData,
-  setCvCreation,
-  works,
-  setWorks,
-  educations,
-  setEducations,
-  languages,
-  setLanguages,
 }: ConstructorProps) {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [isAdditionalShown, setIsAdditionalShown] = useState(false);
@@ -77,6 +60,11 @@ function Constructor({
   const clearForm = () => {
     setRequiredData(defaultRequiredData);
     setAdditionalData(defaultAdditionalData);
+  };
+
+  const saveData = () => {
+    localStorage.setItem('requiredData', JSON.stringify(requiredData));
+    localStorage.setItem('additionalData', JSON.stringify(additionalData));
   }
 
   useEffect(() => {
@@ -128,12 +116,6 @@ function Constructor({
             <AdditionalInputs
               additionalData={additionalData}
               setAdditionalData={setAdditionalData}
-              works={works}
-              setWorks={setWorks}
-              educations={educations}
-              setEducations={setEducations}
-              languages={languages}
-              setLanguages={setLanguages}
             />
             <AdditionalButtonsWrapper>
               <Button
@@ -146,11 +128,7 @@ function Constructor({
                   innerText='Create CV'
                   id='create'
                   disabled={!isCreationPossible}
-                  callback={() => {
-                    setCvCreation(true);
-                    localStorage.setItem('requiredData', JSON.stringify(requiredData));
-                    localStorage.setItem('additionalData', JSON.stringify(additionalData));
-                  }}
+                  callback={saveData}
                 />
               </NavLink>
             </AdditionalButtonsWrapper>

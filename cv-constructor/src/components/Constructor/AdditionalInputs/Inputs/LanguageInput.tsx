@@ -6,7 +6,7 @@ import Input from 'components/Input/Input';
 import Selector from 'components/Selector/Selector';
 
 import { langLevels } from 'utils/variables';
-import { Language, SetState } from 'utils/interfaces';
+import { AdditionalData, Language, SetState } from 'utils/interfaces';
 
 import {
   Wrapper,
@@ -16,20 +16,22 @@ import {
 
 interface LangProps {
   language: Language;
-  setLanguages: SetState<Language[]>;
+  setAdditionalData: SetState<AdditionalData>;
   removeBlock: () => void;
 }
 
 function LanguageInput({
   language,
-  setLanguages,
+  setAdditionalData,
   removeBlock,
 }: LangProps) {
-  const updateLanguage = (key: string, value: string) => {
-    setLanguages((prev) =>
-      prev.map((el) => (el.id === language.id ? { ...el, [key]: value } : el))
-    );
-  };
+  const updateLanguage = (key: string, value: string) =>
+    setAdditionalData((prev) => ({
+      ...prev,
+      languages: prev.languages.map((el) =>
+        el.id === language.id ? { ...el, [key]: value } : el
+      ),
+    }));
 
   return (
     <Wrapper>

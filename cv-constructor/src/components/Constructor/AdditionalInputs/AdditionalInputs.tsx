@@ -3,13 +3,7 @@ import { v4 } from 'uuid';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-import {
-  AdditionalData,
-  Education,
-  Language,
-  SetState,
-  Work,
-} from 'utils/interfaces';
+import { AdditionalData, SetState } from 'utils/interfaces';
 
 import {
   defaultEducation,
@@ -33,81 +27,83 @@ import {
 interface AdditionalProps {
   additionalData: AdditionalData,
   setAdditionalData: SetState<AdditionalData>,
-  works: Work[],
-  setWorks: SetState<Work[]>,
-  educations: Education[],
-  setEducations: SetState<Education[]>,
-  languages: Language[],
-  setLanguages: SetState<Language[]>,
 }
 
 function AdditionalInputs({
   additionalData,
   setAdditionalData,
-  works,
-  setWorks,
-  educations,
-  setEducations,
-  languages,
-  setLanguages,
 }: AdditionalProps) {
-  const addNewBlock = <T,>(
-    newBlock: T,
-    setState: SetState<T[]>
-  ) => setState((prev) => [...prev, newBlock]);
+  const addNewBlock = <T,>(newBlock: T, key: keyof AdditionalData) =>
+    setAdditionalData((prev) => ({ ...prev, [key]: [...prev[key], newBlock] }));
+
   return (
     <AdditionalInputsContainer>
       <InputsTitle>
         Work experience
-        <AddButton onClick={() => {
-          addNewBlock({ ...defaultWork, id: v4() }, setWorks);
-        }}>
+        <AddButton
+          onClick={() => {
+            addNewBlock({ ...defaultWork, id: v4() }, 'works');
+          }}
+        >
           <AddCircleIcon sx={iconStyles} />
         </AddButton>
       </InputsTitle>
-      {works.map((item) => (
+      {additionalData.works.map((item) => (
         <WorkInput
           key={item.id}
           work={item}
-          setWorks={setWorks}
+          setAdditionalData={setAdditionalData}
           removeBlock={() =>
-            setWorks((prev) => prev.filter((el) => el.id !== item.id))
+            setAdditionalData((prev) => ({
+              ...prev,
+              works: prev.works.filter((el) => el.id !== item.id),
+            }))
           }
         />
       ))}
       <InputsTitle>
         Education
-        <AddButton onClick={() => {
-          addNewBlock({ ...defaultEducation, id: v4() }, setEducations);
-        }}>
+        <AddButton
+          onClick={() => {
+            addNewBlock({ ...defaultEducation, id: v4() }, 'educations');
+          }}
+        >
           <AddCircleIcon sx={iconStyles} />
         </AddButton>
       </InputsTitle>
-      {educations.map((item) => (
+      {additionalData.educations.map((item) => (
         <EducationInput
           key={item.id}
           education={item}
-          setEducations={setEducations}
+          setAdditionalData={setAdditionalData}
           removeBlock={() =>
-            setEducations((prev) => prev.filter((el) => el.id !== item.id))
+            setAdditionalData((prev) => ({
+              ...prev,
+              educations: prev.educations.filter((el) => el.id !== item.id),
+            }))
           }
         />
       ))}
       <InputsTitle>
         Languages
-        <AddButton onClick={() => {
-          addNewBlock({ ...defaultLanguage, id: v4() }, setLanguages);
-        }}>
+        <AddButton
+          onClick={() => {
+            addNewBlock({ ...defaultLanguage, id: v4() }, 'languages');
+          }}
+        >
           <AddCircleIcon sx={iconStyles} />
         </AddButton>
       </InputsTitle>
-      {languages.map((item) => (
+      {additionalData.languages.map((item) => (
         <LanguageInput
           key={item.id}
           language={item}
-          setLanguages={setLanguages}
+          setAdditionalData={setAdditionalData}
           removeBlock={() =>
-            setLanguages((prev) => prev.filter((el) => el.id !== item.id))
+            setAdditionalData((prev) => ({
+              ...prev,
+              languages: prev.languages.filter((el) => el.id !== item.id),
+            }))
           }
         />
       ))}

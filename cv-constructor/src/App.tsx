@@ -5,9 +5,6 @@ import { ThemeProvider } from 'styled-components';
 import {
   defaultRequiredData,
   defaultAdditionalData,
-  defaultEducation,
-  defaultLanguage,
-  defaultWork
 } from 'utils/variables';
 
 import Header from 'components/Header/Header';
@@ -25,10 +22,6 @@ function App() {
   const [imageUrl, setImageUrl] = useState('');
   const [requiredData, setRequiredData] = useState(defaultRequiredData);
   const [additionalData, setAdditionalData] = useState(defaultAdditionalData);
-  const [works, setWorks] = useState([defaultWork]);
-  const [educations, setEducations] = useState([defaultEducation]);
-  const [languages, setLanguages] = useState([defaultLanguage]);
-  const [cvCreation, setCvCreation] = useState(false);
   const [isModalActive, setIsModalActive] = useState(false);
 
   useEffect(() => {
@@ -36,18 +29,6 @@ function App() {
       setIsModalActive(true);
     }
   }, []);
-
-  useEffect(() => {
-    if (cvCreation) {
-      setAdditionalData((prev) => ({
-        ...prev,
-        works,
-        educations,
-        languages,
-      }));
-      setCvCreation(false);
-    }
-  }, [cvCreation]);
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -66,13 +47,7 @@ function App() {
             setRequiredData={setRequiredData}
             additionalData={additionalData}
             setAdditionalData={setAdditionalData}
-            setCvCreation={setCvCreation}
-            works={works}
-            setWorks={setWorks}
-            educations={educations}
-            setEducations={setEducations}
-            languages={languages}
-            setLanguages={setLanguages} />}
+          />}
         />
         <Route path="/constructor/cv" element={
           <Creator
@@ -87,12 +62,6 @@ function App() {
         setActive={setIsModalActive}
         setRequiredData={setRequiredData}
         setAdditionalData={setAdditionalData}
-        works={works}
-        setWorks={setWorks}
-        educations={educations}
-        setEducations={setEducations}
-        languages={languages}
-        setLanguages={setLanguages}
         text="Would you like to continue CV creation with your previous data?"
       />
     </ThemeProvider>

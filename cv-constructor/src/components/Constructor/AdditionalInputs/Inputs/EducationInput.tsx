@@ -2,7 +2,7 @@ import React from 'react';
 
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
-import { Education, SetState } from 'utils/interfaces';
+import { AdditionalData, Education, SetState } from 'utils/interfaces';
 
 import Input from 'components/Input/Input';
 
@@ -15,20 +15,22 @@ import {
 
 interface EducationProps {
   education: Education;
-  setEducations: SetState<Education[]>;
+  setAdditionalData: SetState<AdditionalData>;
   removeBlock: () => void;
 }
 
 function EducationInput({
   education,
-  setEducations,
+  setAdditionalData,
   removeBlock
 }: EducationProps) {
-  const updateEducation = (key: string, value: string) => {
-    setEducations((prev) =>
-      prev.map((el) => (el.id === education.id ? { ...el, [key]: value } : el))
-    );
-  };
+  const updateEducation = (key: string, value: string) =>
+    setAdditionalData((prev) => ({
+      ...prev,
+      educations: prev.educations.map((el) =>
+        el.id === education.id ? { ...el, [key]: value } : el
+      ),
+    }));
 
   return (
     <Container>

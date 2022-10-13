@@ -3,11 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 import {
   AdditionalData,
-  Education,
-  Language,
   RequiredData,
   SetState,
-  Work,
 } from 'utils/interfaces';
 
 import Button from 'components/Button/Button';
@@ -25,12 +22,6 @@ interface SignInProps {
   text: string,
   setRequiredData: SetState<RequiredData>,
   setAdditionalData: SetState<AdditionalData>,
-  works: Work[],
-  setWorks: SetState<Work[]>,
-  educations: Education[],
-  setEducations: SetState<Education[]>,
-  languages: Language[],
-  setLanguages: SetState<Language[]>,
 }
 
 function Modal({
@@ -39,13 +30,26 @@ function Modal({
   text,
   setRequiredData,
   setAdditionalData,
-  works,
-  setWorks,
-  educations,
-  setEducations,
-  languages,
-  setLanguages,
 }: SignInProps) {
+  const cleanLocalStorage = () => {
+    localStorage.removeItem('requiredData');
+    localStorage.removeItem('additionalData');
+    setActive(false);
+  };
+
+  const getDataFromLocalStorage = () => {
+    if (localStorage.getItem('requiredData')) {
+      setRequiredData(JSON.parse(localStorage.getItem('requiredData') as string));
+    }
+    if (localStorage.getItem('additionalData')) {
+      const data = (JSON.parse(localStorage.getItem('additionalData') as string) as AdditionalData);
+      setAdditionalData({
+        ...data
+      });
+    }
+    setActive(false);
+  }
+
   return (
     <Shadow onClick={() => setActive(false)} active={active}>
       <ModalWindow onClick={(e) => e.stopPropagation()} active={active}>
@@ -55,36 +59,13 @@ function Modal({
             <Button
               innerText="Yes"
               id="useLocal"
-              callback={() => {
-                if (localStorage.getItem('requiredData')) {
-                  setRequiredData(JSON.parse(localStorage.getItem('requiredData') as string));
-                }
-                if (localStorage.getItem('additionalData')) {
-                  const data = (JSON.parse(localStorage.getItem('additionalData') as string) as AdditionalData);
-                  setWorks(data.works);
-                  setEducations(data.educations);
-                  setLanguages(data.languages);
-                  setAdditionalData((prev) => ({
-                    ...prev,
-                    works,
-                    educations,
-                    languages,
-                    skills: data.skills,
-                    projects: data.projects,
-                  }));
-                }
-                setActive(false)
-              }}
+              callback={getDataFromLocalStorage}
             />
           </NavLink>
           <Button
             innerText="No"
             id="cleanLocal"
-            callback={() => {
-              localStorage.removeItem('requiredData');
-              localStorage.removeItem('additionalData');
-              setActive(false);
-            }}
+            callback={cleanLocalStorage}
           />
         </ButtonsWrapper>
       </ModalWindow>
