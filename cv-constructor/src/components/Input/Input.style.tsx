@@ -32,6 +32,10 @@ const InputField = styled.input`
     background-color: ${(props) => props.theme.colors.lightgrey};
     box-shadow: none;
   }
+
+  @media (max-width: 835px) {
+    width: 100%;
+  }
 `;
 
 const Label = styled.label`

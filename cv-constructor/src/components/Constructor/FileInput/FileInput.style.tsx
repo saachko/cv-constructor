@@ -37,6 +37,7 @@ const FileInput = styled.input`
   opacity: 0;
   visibility: hidden;
   position: absolute;
+  width: 0;
 `;
 
 const FileLabel = styled.label<LabeProps>`

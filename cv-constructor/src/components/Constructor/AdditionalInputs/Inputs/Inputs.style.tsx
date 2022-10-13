@@ -14,6 +14,10 @@ const Wrapper = styled.div`
   select {
     width: 30%;
   }
+
+  @media (max-width: 340px) {
+    flex-direction: column; 
+  }
 `;
 
 const RemoveButton = styled.button.attrs({

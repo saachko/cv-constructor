@@ -14,6 +14,10 @@ const HomeSvgWrapper = styled.div`
   right: 0;
   z-index: -5;
 
+  @media (max-width: 968px) {
+    opacity: 0.7;
+  }
+
   svg {
     position: absolute;
     top: -10%;
@@ -28,6 +32,17 @@ const MainSection = styled.section`
   display: flex;
   align-items: center;
   margin: 0;
+
+  @media (max-width: 1050px) {
+    display: grid;
+    width: 100%
+  }
+
+  @media (max-width: 968px) {
+    display: grid;
+    width: 100%;
+    justify-content: center;  
+  }
 `;
 
 const MainInfo = styled.div`
@@ -36,6 +51,16 @@ const MainInfo = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 15px;
+
+  @media (max-width: 968px) {
+    background-color: rgba(255,255,255, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 400px) {
+    width: 300px;
+  }
 `;
 
 const MainTitle = styled.h1`

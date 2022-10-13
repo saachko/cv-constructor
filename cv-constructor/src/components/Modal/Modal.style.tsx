@@ -42,6 +42,11 @@ const ModalWindow = styled.div<ModalProps>`
     transform: scale(1);
   `}
 
+  @media (max-width: 545px) {
+    width: 300px;
+    height: 225px;
+  }
+
   Button {
     align-self: center;
   }
@@ -58,6 +63,10 @@ const ButtonsWrapper = styled.div`
   Button#useLocal {
     margin-top: 10px;
     min-width: 180px;
+  }
+
+  @media (max-width: 545px) {
+    flex-direction: column;
   }
 `;
 

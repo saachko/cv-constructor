@@ -15,14 +15,33 @@ const InputsTitle = styled.h3`
 const InputsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 5px;
+
+  @media (max-width: 835px) {
+    flex-direction: column;
+  }
 
   select {
     margin-right: 5px;
   }
 `;
 
+const InputWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+
+  @media (max-width: 835px) {
+    justify-content: flex-start;
+  }
+`;
+
 const TelephoneInputWrapper = styled.div`
   width: 47%;
+
+  @media (max-width: 835px) {
+    width: 100%;
+  }
   
   div.intl-tel-input {
     width: 100%;
@@ -87,6 +106,7 @@ const iconStylesFalse = {
 export {
   InputsContainer,
   InputsTitle,
+  InputWrapper,
   InputsWrapper,
   TelephoneInputWrapper,
   CheckButton,

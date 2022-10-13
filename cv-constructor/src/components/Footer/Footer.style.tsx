@@ -15,6 +15,11 @@ const FooterWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 15px;
+
+  @media (max-width: 500px) {
+    flex-direction: column; 
+    gap: 15px;
+  }
 `;
 
 const AuthorInfo = styled.div`

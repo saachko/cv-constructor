@@ -26,6 +26,7 @@ import {
   ThemeButton,
   Note,
   TemplateButton,
+  ThemeButtonsWrapper,
 } from './Creator.style';
 
 interface CreatorProps {
@@ -99,7 +100,7 @@ function Creator({
         >
           PREVIOUS TEMPLATE
         </TemplateButton>
-        <>
+        <ThemeButtonsWrapper>
           {cvThemeButtons.map((button) => (
             <ThemeButton
               key={button.id}
@@ -107,7 +108,7 @@ function Creator({
               onClick={() => setColorThemeForCv(button.theme)}
             />
           ))}
-        </>
+        </ThemeButtonsWrapper>
         <TemplateButton
           type="button"
           id="next"

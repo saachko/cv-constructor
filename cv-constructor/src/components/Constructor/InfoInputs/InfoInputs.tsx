@@ -4,6 +4,7 @@ import IntlTelInput from 'react-intl-tel-input';
 import 'react-intl-tel-input/dist/main.css';
 
 import { RequiredData, SetState } from 'utils/interfaces';
+import useWindowSize from 'utils/useWindowSize';
 
 import Input from 'components/Input/Input'
 import Textarea from 'components/Textarea/Textarea';
@@ -15,6 +16,7 @@ import {
   InputsContainer,
   InputsTitle,
   InputsWrapper,
+  InputWrapper,
   TelephoneInputWrapper,
   CheckButton,
   iconStylesTrue,
@@ -33,6 +35,7 @@ function InfoInputs({
   setRequiredData
 }: InfoInputsProps) {
   const [hasNoLinkedIn, setHasNoLinkedIn] = useState(false);
+  const size = useWindowSize();
 
   useEffect(() => {
     if (hasNoLinkedIn) {
@@ -54,7 +57,7 @@ function InfoInputs({
             setRequiredData((prev) => ({ ...prev, firstName: target.value }));
           }}
           minlength={1}
-          inputWidth="35%"
+          inputWidth={size.width < 835 ? '100%' : '35%'}
           required
         />
         <Input
@@ -67,7 +70,7 @@ function InfoInputs({
             setRequiredData((prev) => ({ ...prev, lastName: target.value }));
           }}
           minlength={1}
-          inputWidth="35%"
+          inputWidth={size.width < 835 ? '100%' : '35%'}
           required
         />
         <Input
@@ -80,7 +83,7 @@ function InfoInputs({
           onChange={({ target }) => {
             setRequiredData((prev) => ({ ...prev, birthday: target.value }));
           }}
-          inputWidth="25%"
+          inputWidth={size.width < 835 ? '100%' : '25%'}
           required
         />
       </InputsWrapper>
@@ -121,7 +124,7 @@ function InfoInputs({
             }}
           />
         </TelephoneInputWrapper>
-        <InputsWrapper>
+        <InputWrapper>
           <Selector
             options={messengers}
             onChange={({ target }) => {
@@ -139,10 +142,10 @@ function InfoInputs({
               setRequiredData((prev) => ({ ...prev, messengerLink: target.value }));
             }}
             minlength={2}
-            inputWidth="240px"
+            inputWidth={size.width < 835 ? '100%' : '240px'}
             required
           />
-        </InputsWrapper>
+        </InputWrapper>
       </InputsWrapper>
       <InputsWrapper>
         <Input
@@ -156,10 +159,10 @@ function InfoInputs({
             setRequiredData((prev) => ({ ...prev, email: target.value }));
           }}
           minlength={5}
-          inputWidth="47%"
+          inputWidth={size.width < 835 ? '100%' : '47%'}
           required
         />
-        <InputsWrapper>
+        <InputWrapper>
           <Input
             labelText="LinkedIn"
             type="text"
@@ -170,7 +173,7 @@ function InfoInputs({
               setRequiredData((prev) => ({ ...prev, linkedin: target.value }));
             }}
             minlength={2}
-            inputWidth="325px"
+            inputWidth={size.width < 835 ? '90%' : '325px'}
             disabled={hasNoLinkedIn}
           />
           <CheckButton onClick={(event) => {
@@ -179,7 +182,7 @@ function InfoInputs({
           }}>
             <CheckCircleIcon sx={hasNoLinkedIn ? iconStylesTrue : iconStylesFalse} />
           </CheckButton>
-        </InputsWrapper>
+        </InputWrapper>
       </InputsWrapper>
       <InputsWrapper>
         <Input

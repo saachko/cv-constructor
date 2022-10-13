@@ -30,11 +30,17 @@ const RequiredFields = styled.div`
   width: 100%;
   gap: 15px;
   justify-content: space-between;
+
+  @media (max-width: 595px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Note = styled.p`
   color: ${defaultTheme.colors.textHighlighted};
   margin: 25px 10px;
+  text-align: center;
 `;
 
 const AdditionalSection = styled.section`
@@ -47,11 +53,23 @@ const ButtonsWrapper = styled.div`
   align-self: flex-end;
   display: flex;
   gap: 15px;
+
+  @media (max-width: 595px) {
+    align-self: center;
+  }
+
+  @media (max-width: 525px) {
+    flex-direction: column;
+  }
 `;
 
 const AdditionalButtonsWrapper = styled.div`
   display: flex;
   gap: 15px;
+
+  @media (max-width: 525px) {
+    flex-direction: column;
+  }
 `;
 
 export {

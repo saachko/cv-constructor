@@ -4,6 +4,10 @@ import defaultTheme from 'styles/theme';
 
 const AdditionalInputsContainer = styled.section`
   width: 100%;
+
+  @media (max-width: 340px) {
+    width: 85vw;
+  }
 `;
 
 const InputsTitle = styled.h3`
