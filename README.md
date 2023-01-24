@@ -4,6 +4,8 @@ _The application is a CV-builder where a user can easily create a beautiful CV w
 
 [Link to the deploy](https://saachko.github.io/cv-constructor/ "CV-constructor")
 
+[Link to the video presentation](https://www.youtube.com/watch?v=iS8nKSrE0rs "CV-constructor video")
+
 ## Usage
 
 At first a user have to fill the form with required personal information and upload a photo. Then the additional section will be shown. The fields in the additional section are not necessary to be filled for CV creation, but it's highly recommended to fill them in order to make a more complete and informative CV. After that the user will be suggested to choose one of three different CV-templates and one of four color-themes for it. When the user is satisfied with the result, the CV can be saved as PDF file or printed.
